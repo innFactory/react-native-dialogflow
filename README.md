@@ -20,7 +20,7 @@ Import ApiAi:
 import ApiAi from "react-native-api-ai";
 ```
 
-Set the `clientAccessToken` and the language in your contructor:
+Set the `clientAccessToken` and the language in your constructor:
 ```javascript
  constructor(props) {
         super(props);
@@ -73,7 +73,7 @@ Usage of `onListeningStarted`, `onListeningCanceled`, `onListeningFinished` and 
         }}
    />
 ```
-Note: Make sure you are setting the callbacks before startListening again every single time. Don't set in e.g. constructor or componentsDidMount if you are executing startListening more than one times.
+Note: Make sure you are setting the callbacks before startListening every single time again. Don't set the callbacks in e.g. constructor or componentsDidMount if you are executing startListening more than one times.
 
 Using your own speech recognition:
 ```javascript
