@@ -1,4 +1,9 @@
 # react-native-api-ai
+
+<img src="https://travis-ci.org/innFactory/react-native-api-ai.svg?branch=master"/>
+<img src="https://img.shields.io/npm/v/react-native-api-ai.svg"/>
+<img src="https://img.shields.io/npm/dt/react-native-api-ai.svg"/>
+
 A React-Native Bridge for the Google API AI SDK
 
 Currently we are supporting android only. The support for ios will be released the next days.
@@ -116,3 +121,10 @@ ApiAi.setConfiguration("4xxxxxxxe90xxxxxxxxc372", ApiAi.LANG_GERMAN);
 | `onListeningCanceled`            | callback: ()=>{}    || |
 | `onListeningFinished`            | callback: ()=>{}    | | |
 | `onAudioLevel`            | callback: (level: number)=>{}    || |
+
+
+## Contributors
+
+[Anton Spöck](https://github.com/spoeck)
+
+Powered by [innFactory](https://innfactory.de/)
