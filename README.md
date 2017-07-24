@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/innFactory/react-native-api-ai.svg?branch=master)](https://www.npmjs.com/package/react-native-api-ai)
 [![Version](https://img.shields.io/npm/v/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
-[![Version](https://img.shields.io/npm/dt/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
+[![Downloads](https://img.shields.io/npm/dt/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
 
 A React-Native Bridge for the Google API AI SDK
 
