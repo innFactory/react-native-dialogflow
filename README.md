@@ -1,8 +1,8 @@
 # react-native-api-ai
 
-<img src="https://travis-ci.org/innFactory/react-native-api-ai.svg?branch=master"/>
-<img src="https://img.shields.io/npm/v/react-native-api-ai.svg"/>
-<img src="https://img.shields.io/npm/dt/react-native-api-ai.svg"/>
+[![Build Status](https://travis-ci.org/innFactory/react-native-api-ai.svg?branch=master)](https://www.npmjs.com/package/react-native-api-ai)
+[![Version](https://img.shields.io/npm/v/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
+[![Version](https://img.shields.io/npm/dt/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
 
 A React-Native Bridge for the Google API AI SDK
 
