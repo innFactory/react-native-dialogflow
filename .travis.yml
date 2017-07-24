@@ -1,6 +1,7 @@
 language: android
 sudo: required
 jdk: oraclejdk8
+install: ant deps
 android:
   components:
     - build-tools-25.0.3
