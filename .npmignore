@@ -1,0 +1,4 @@
+node_modules/
+example/
+android/build/
+ios/lib/DerivedData/
