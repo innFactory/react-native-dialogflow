@@ -26,7 +26,7 @@ export default class App extends Component {
         };
 
         ApiAi.setConfiguration(
-            "INSERT_HEAR_YOUR_CLENT_ACCESS_TOKEN", ApiAi.LANG_GERMAN
+            "INSERT_HERE_YOUR_CLENT_ACCESS_TOKEN", ApiAi.LANG_GERMAN
         );
     }
 
