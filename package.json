@@ -6,11 +6,7 @@
 		"type": "git",
 		"url": "https://github.com/innFactory/react-native-api-ai"
 	},
-	"peerDependencies": {
-		"react-native": "^0.41.2"
-	},
-	"devDependencies": {
-		"react-native": "^0.41.2"
+	"dependencies": {
 	},
 	"keywords": [
 		"react-native",

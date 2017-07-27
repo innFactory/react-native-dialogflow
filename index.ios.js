@@ -1,7 +1,8 @@
 
-import { NativeModules } from 'react-native';
+import { requireNativeComponent, NativeModules } from 'react-native';
 
-const { ApiAi } = NativeModules;
-console.log(ApiAi);
+const ApiAi = NativeModules.ApiAi;
 
-export default ApiAi;
+console.log(NativeModules);
+
+module.exports = ApiAi;

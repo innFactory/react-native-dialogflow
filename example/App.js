@@ -25,6 +25,8 @@ export default class App extends Component {
             audioLevel: 0,
         };
 
+        console.log(ApiAi);
+
         ApiAi.setConfiguration(
             "INSERT_YOUR_CLENT_ACCESS_TOKEN_HERE", ApiAi.LANG_GERMAN
         );
