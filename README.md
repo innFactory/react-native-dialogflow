@@ -4,9 +4,9 @@
 [![Version](https://img.shields.io/npm/v/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
 [![Downloads](https://img.shields.io/npm/dt/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
 
-A React-Native Bridge for the Google API AI SDK
+A React-Native Bridge for the Google API AI SDK.
 
-Currently we are supporting android only. The support for ios will be released the next days.
+Support for iOS 10+ and Android!
 
 
 ## Install
