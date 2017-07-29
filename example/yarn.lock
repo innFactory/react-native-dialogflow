@@ -82,6 +82,10 @@ anymatch@^1.3.0:
     arrify "^1.0.0"
     micromatch "^2.1.5"
 
+api-ai-javascript@^2.0.0-beta.14:
+  version "2.0.0-beta.21"
+  resolved "https://registry.yarnpkg.com/api-ai-javascript/-/api-ai-javascript-2.0.0-beta.21.tgz#43465f6835dc4f0e14e0311c0bb64017f3148b5b"
+
 append-transform@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/append-transform/-/append-transform-0.4.0.tgz#d76ebf8ca94d276e247a36bad44a4b74ab611991"
@@ -2967,6 +2971,13 @@ react-deep-force-update@^1.0.0:
 
 react-native-api-ai@../:
   version "0.0.1"
+  dependencies:
+    api-ai-javascript "^2.0.0-beta.14"
+    react-native-speech-to-text-ios "^1.0.4"
+
+react-native-speech-to-text-ios@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-speech-to-text-ios/-/react-native-speech-to-text-ios-1.0.4.tgz#65e20a6146de7967e6d41972c8d611b6ad937f82"
 
 react-native@0.42.3:
   version "0.42.3"

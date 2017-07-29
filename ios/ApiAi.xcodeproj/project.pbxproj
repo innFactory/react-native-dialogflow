@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79DC99B4F696471B99960C9D /* libRNSpeechToTextIos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38383E296E604DAD8D5AEE1C /* libRNSpeechToTextIos.a */; };
 		CDD7BF841B2D5126006FDA75 /* libApiAi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD7BF781B2D5125006FDA75 /* libApiAi.a */; };
 		DBCB5CDE1B46E62D005CB38B /* ApiAi.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCB5CDD1B46E62D005CB38B /* ApiAi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8427738C1F2CDF9A00EA2752 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA8B7B90D397461785B390DB /* RNSpeechToTextIos.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNSpeechToTextIos;
+		};
 		CDD7BF851B2D5126006FDA75 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CDD7BF701B2D5125006FDA75 /* Project object */;
@@ -34,10 +42,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		38383E296E604DAD8D5AEE1C /* libRNSpeechToTextIos.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSpeechToTextIos.a; sourceTree = "<group>"; };
 		CDD7BF781B2D5125006FDA75 /* libApiAi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libApiAi.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD7BF831B2D5126006FDA75 /* ApiAiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApiAiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCB5CDC1B46E62D005CB38B /* ApiAi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiAi.h; sourceTree = "<group>"; };
 		DBCB5CDD1B46E62D005CB38B /* ApiAi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiAi.m; sourceTree = "<group>"; };
+		EA8B7B90D397461785B390DB /* RNSpeechToTextIos.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSpeechToTextIos.xcodeproj; path = "../node_modules/react-native-speech-to-text-ios/ios/RNSpeechToTextIos.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79DC99B4F696471B99960C9D /* libRNSpeechToTextIos.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,11 +70,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56489C590F2D4EC58151DA97 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				EA8B7B90D397461785B390DB /* RNSpeechToTextIos.xcodeproj */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		8427736A1F2CDF9A00EA2752 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8427738D1F2CDF9A00EA2752 /* libRNSpeechToTextIos.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CDD7BF6F1B2D5125006FDA75 = {
 			isa = PBXGroup;
 			children = (
 				DBCB5CDB1B46E62D005CB38B /* ApiAi */,
 				CDD7BF791B2D5125006FDA75 /* Products */,
+				56489C590F2D4EC58151DA97 /* Libraries */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,7 +110,6 @@
 				DBCB5CDC1B46E62D005CB38B /* ApiAi.h */,
 				DBCB5CDD1B46E62D005CB38B /* ApiAi.m */,
 			);
-			name = ApiAi;
 			path = ApiAi;
 			sourceTree = "<group>";
 		};
@@ -110,9 +137,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDD7BF8F1B2D5126006FDA75 /* Build configuration list for PBXNativeTarget "ApiAiTests" */;
 			buildPhases = (
+				EFAC75ADB211BDF9EFB98E2C /* [CP] Check Pods Manifest.lock */,
 				CDD7BF7F1B2D5126006FDA75 /* Sources */,
 				CDD7BF801B2D5126006FDA75 /* Frameworks */,
 				CDD7BF811B2D5126006FDA75 /* Resources */,
+				601948CA2F575DACD5063CFD /* [CP] Embed Pods Frameworks */,
+				3371A9D16586F53FFB2873A1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,11 +160,12 @@
 		CDD7BF701B2D5125006FDA75 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 630;
 				ORGANIZATIONNAME = innFactory;
 				TargetAttributes = {
 					CDD7BF771B2D5125006FDA75 = {
 						CreatedOnToolsVersion = 6.3.2;
+						LastSwiftMigration = 830;
 					};
 					CDD7BF821B2D5126006FDA75 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -151,6 +182,12 @@
 			mainGroup = CDD7BF6F1B2D5125006FDA75;
 			productRefGroup = CDD7BF791B2D5125006FDA75 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 8427736A1F2CDF9A00EA2752 /* Products */;
+					ProjectRef = EA8B7B90D397461785B390DB /* RNSpeechToTextIos.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CDD7BF771B2D5125006FDA75 /* ApiAi */,
@@ -158,6 +195,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8427738D1F2CDF9A00EA2752 /* libRNSpeechToTextIos.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSpeechToTextIos.a;
+			remoteRef = 8427738C1F2CDF9A00EA2752 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CDD7BF811B2D5126006FDA75 /* Resources */ = {
@@ -168,6 +215,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3371A9D16586F53FFB2873A1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ApiAiTests/Pods-ApiAiTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		601948CA2F575DACD5063CFD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ApiAiTests/Pods-ApiAiTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFAC75ADB211BDF9EFB98E2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CDD7BF741B2D5125006FDA75 /* Sources */ = {
@@ -277,30 +372,49 @@
 		CDD7BF8D1B2D5126006FDA75 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/node_modules/react-native/React/**",
 					"$(SRCROOT)/../react-native/React/**",
+					"$(SRCROOT)/ApiAI/**",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ApiAi\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ApiAi;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ApiAi/ApiAi-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		CDD7BF8E1B2D5126006FDA75 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/node_modules/react-native/React/**",
 					"$(SRCROOT)/../react-native/React/**",
+					"$(SRCROOT)/ApiAI/**",
+				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ApiAi\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ApiAi;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "ApiAi/ApiAi-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

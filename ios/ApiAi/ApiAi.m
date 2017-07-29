@@ -10,9 +10,15 @@
 @implementation ApiAi
 RCT_EXPORT_MODULE();
 
+ /*
+RCT_EXPORT_METHOD(setConfiguration:(NSString *)clientAccessToken languageTag:(NSString *)languageTag) {
+    
+}
+
 
 RCT_EXPORT_METHOD(startListening) {
    
 }
+  */
 
 @end
