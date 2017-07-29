@@ -1,30 +1,30 @@
 {
-	"name": "react-native-api-ai",
-	"description": "A React-Native Bridge for the Google API AI SDK",
-	"version": "0.0.1",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/innFactory/react-native-api-ai"
-	},
-	"dependencies": {
-		"api-ai-javascript": "^2.0.0-beta.14",
-		"react-native-speech-to-text-ios": "^1.0.4"
-	},
-	"peerDependencies": {
-		"react-native": ">=0.40.0"
-	},
-	"keywords": [
-		"react-native",
-		"api-ai",
-		"apiai",
-		"api",
-		"ai",
-		"api.ai",
-		"google",
-		"voice",
-		"speak",
-		"text-recognition"
-	],
-	"author": "Anton Spöck (https://github.com/spoeck)",
-	"license": "MIT"
+  "name": "react-native-api-ai",
+  "description": "A React-Native Bridge for the Google API AI SDK",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/innFactory/react-native-api-ai"
+  },
+  "dependencies": {
+    "api-ai-javascript": "^2.0.0-beta.14",
+    "react-native-speech-to-text-ios": "^1.0.4"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.40.0"
+  },
+  "keywords": [
+    "react-native",
+    "api-ai",
+    "apiai",
+    "api",
+    "ai",
+    "api.ai",
+    "google",
+    "voice",
+    "speak",
+    "text-recognition"
+  ],
+  "author": "Anton Spöck (https://github.com/spoeck)",
+  "license": "MIT"
 }
