@@ -132,7 +132,7 @@ ApiAi.setConfiguration("4xxxxxxxe90xxxxxxxxc372", ApiAi.LANG_GERMAN);
 
 ## Methods
 | name                  | platform | param1    | param2    | param3    |
-| --------------------- | --------- | --------- | --------- |
+| --------------------- | -------- | --------- | --------- | --------- |
 | `setConfiguration`    | both | clientAccessToken: String | languageTag: String | |
 | `startListening`      | both | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}  | |
 | `finishListening`      | ios |  |   | |
