@@ -1,20 +1,9 @@
 
 import { NativeModules, NativeAppEventEmitter } from 'react-native';
 import {ApiAiClient} from 'api-ai-javascript';
-//var SpeechToText = require('react-native-speech-to-text-ios');
+
 var SpeechToText = NativeModules.RNSpeechToTextIos;
-/*
-let ApiAi = NativeModules.ApiAi;
 
-ApiAi.setConfiguration = (clientAccessToken, languageToken) => {
-  ApiAi.client = new ApiAiJS.ApiAiClient({accessToken: clientAccessToken});
-}
-
-
-console.log(NativeModules);
-
-module.exports = ApiAi;
-*/
 class ApiAi {
 
 
@@ -47,7 +36,7 @@ class ApiAi {
           onError(result.error);
         } else {
           if (result.isFinal) {
-            this.requestQuery(result.bestTranscription.formattedString, this.onResult, this.onError);
+            this.requestQuery(result.bestTranscription.formattedString, onResult, onError);
           }
 
         }
