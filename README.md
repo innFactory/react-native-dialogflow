@@ -4,9 +4,9 @@
 [![Version](https://img.shields.io/npm/v/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
 [![Downloads](https://img.shields.io/npm/dt/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
 
-A React-Native Bridge for the Google API AI SDK
+A React-Native Bridge for the Google API AI SDK.
 
-Currently we are supporting android only. The support for ios will be released the next days.
+Support for iOS 10+ and Android!
 
 
 ## Install
@@ -18,6 +18,19 @@ npm install --save react-native-api-ai
 react-native link react-native-api-ai
 ```
 
+### iOS: IMPORTANT xCode plist settings
+
+Also, you need open the React Native xCode project and add two new keys into `Info.plist`
+Just right click on `Info.plist` -> `Open As` -> `Source Code` and paste these strings somewhere into root `<dict>` tag
+
+```xml
+<key>NSSpeechRecognitionUsageDescription</key>
+<string>Your usage description here</string>
+<key>NSMicrophoneUsageDescription</key>
+<string>Your usage description here</string>
+```
+
+Application will crash if you don't do this.
 
 ## Usage
 Import ApiAi:
@@ -48,8 +61,14 @@ Start listening with integrated speech recognition:
         }}
    />
 ```
+In iOS only you have to call `finishListening()`. Android detects the end of your speech automatically. That's the reason why we didn't implement the finish method in Android.
+```javascript
+// only for iOS
+ApiAi.finishListening();
+// after this call your callbacks from the startListening will be executed.
+```
 
-Usage of `onListeningStarted`, `onListeningCanceled`, `onListeningFinished` and `onAudioLevel`:
+Only in Android we have four additional methods: `onListeningStarted`, `onListeningCanceled`, `onListeningFinished` and `onAudioLevel`. In iOS they will be never called:
 ```javascript
    <Button onPress={() => {
 
@@ -112,15 +131,16 @@ ApiAi.setConfiguration("4xxxxxxxe90xxxxxxxxc372", ApiAi.LANG_GERMAN);
 * LANG_UKRAINIAN
 
 ## Methods
-| name                  | param1    | param2    | param3    |
-| --------------------- | --------- | --------- | --------- |
-| `setConfiguration`    | clientAccessToken: String | languageTag: String | |
-| `startListening`      | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}  | |
-| `requestQuery`           | query: String |  resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}   |
-| `onListeningStarted`            | callback: ()=>{}    | | |
-| `onListeningCanceled`            | callback: ()=>{}    || |
-| `onListeningFinished`            | callback: ()=>{}    | | |
-| `onAudioLevel`            | callback: (level: number)=>{}    || |
+| name                  | platform | param1    | param2    | param3    |
+| --------------------- | -------- | --------- | --------- | --------- |
+| `setConfiguration`    | both | clientAccessToken: String | languageTag: String | |
+| `startListening`      | both | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}  | |
+| `finishListening`      | ios |  |   | |
+| `requestQuery`           | both | query: String |  resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}   |
+| `onListeningStarted`            | android | callback: ()=>{}    | | |
+| `onListeningCanceled`            | android | callback: ()=>{}    || |
+| `onListeningFinished`            | android | callback: ()=>{}    | | |
+| `onAudioLevel`            | android | callback: (level: number)=>{}    || |
 
 
 ## Contributors
