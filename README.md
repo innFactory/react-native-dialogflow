@@ -61,7 +61,7 @@ Start listening with integrated speech recognition:
         }}
    />
 ```
-In iOS only you have to call `finishListening()`. Android detects the end of your speech automatically. That's the reason why didn't implemented the finish method in Android.
+In iOS only you have to call `finishListening()`. Android detects the end of your speech automatically. That's the reason why we didn't implement the finish method in Android.
 ```javascript
 // only for iOS
 ApiAi.finishListening();
