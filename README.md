@@ -6,8 +6,12 @@
 
 A React-Native Bridge for the Google API AI SDK.
 
+<img src="header_img.png" alt="Header Image"/>
+
 Support for iOS 10+ and Android!
 
+
+[api.ai](https://api.ai) is a powerful tool for building delightful and natural conversational experiences. You can build chat and speech bots and may intergrate it in a lot of platform like twitter, facebook, slack, or alexa.
 
 ## Install
 
