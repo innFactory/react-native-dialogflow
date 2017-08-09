@@ -7,9 +7,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "~15.4.1",
-    "react-native": "0.42.3",
-    "react-native-api-ai": "^1.0.0"
+    "react": "16.0.0-alpha.12",
+    "react-native": "0.47.1",
+    "react-native-api-ai": "^1.0.2"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",
