@@ -1,7 +1,7 @@
 {
   "name": "react-native-api-ai",
   "description": "A React-Native Bridge for the Google API AI SDK",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/innFactory/react-native-api-ai"
