@@ -2,3 +2,5 @@ node_modules/
 example/
 android/build/
 ios/lib/DerivedData/
+header_img.png
+travis.yml
