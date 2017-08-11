@@ -165,6 +165,7 @@ ApiAi.setConfiguration("4xxxxxxxe90xxxxxxxxc372", ApiAi.LANG_GERMAN);
 | `onListeningCanceled`            | android | callback: ()=>{}    || |
 | `onListeningFinished`            | android | callback: ()=>{}    | | |
 | `onAudioLevel`            | android | callback: (level: number)=>{}    || |
+| `setContexts`            | both | array    || |
 
 
 ## Contributors
