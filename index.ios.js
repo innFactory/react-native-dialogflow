@@ -51,9 +51,18 @@ class ApiAi {
     SpeechToText.finishRecognition();
   }
 
-  requestQuery(query: String, onResult: ()=>{}, onError: ()=>{}) {
-      this.client.textRequest(query).then(res=>onResult(res)).catch(err=>onError(err));
-  }
+    setContexts(contexts) {
+        this.contexts = contexts;
+    }
+
+    requestQuery(query: String, onResult: ()=>{}, onError: ()=>{}) {
+        if (this.contexts) {
+            this.client.textRequest(query, {contexts: this.contexts}).then(res=>onResult(res)).catch(err=>onError(err));
+            this.contexts = null;
+        } else {
+            this.client.textRequest(query).then(res=>onResult(res)).catch(err=>onError(err));
+        }
+    }
 
   onAudioLevel(callback) {
 
