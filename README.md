@@ -42,6 +42,7 @@ Import ApiAi:
 import ApiAi from "react-native-api-ai";
 ```
 
+### Configuration
 Set the `clientAccessToken` and the language in your constructor:
 ```javascript
  constructor(props) {
@@ -54,6 +55,7 @@ Set the `clientAccessToken` and the language in your constructor:
 
 ```
 
+### Listening
 Start listening with integrated speech recognition:
 ```javascript
    <Button onPress={() => {
@@ -72,6 +74,31 @@ ApiAi.finishListening();
 // after this call your callbacks from the startListening will be executed.
 ```
 
+### Text Request
+For using your own speech recognition:
+```javascript
+   <Button onPress={() => {
+           ApiAi.requestQuery("Some text for your api-ai agent", result=>console.log(result), error=>console.log(error));
+        }}
+   />
+```
+
+
+### Contexts
+Set contexts (will take affect on next startListening or queryRequest):
+```javascript
+const contexts = [{
+  name: "deals",
+  lifespan: 1,
+  parameters: {
+      Shop: "Rewe"
+  }
+}];
+
+ApiAi.setContexts(contexts);
+```
+
+### Events on Android
 Only in Android we have four additional methods: `onListeningStarted`, `onListeningCanceled`, `onListeningFinished` and `onAudioLevel`. In iOS they will be never called:
 ```javascript
    <Button onPress={() => {
@@ -103,13 +130,6 @@ Only in Android we have four additional methods: `onListeningStarted`, `onListen
 ```
 Note: Make sure you are setting the callbacks before startListening every single time again. Don't set the callbacks in e.g. constructor or componentsDidMount if you are executing startListening more than one times.
 
-Using your own speech recognition:
-```javascript
-   <Button onPress={() => {
-           ApiAi.requestQuery("Some text for your api-ai agent", result=>console.log(result), error=>console.log(error));
-        }}
-   />
-```
 
 ## Supported Languages
 Set the language in your configuration:
