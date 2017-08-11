@@ -263,7 +263,19 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
             protected AIResponse doInBackground(AIRequest... requests) {
                 final AIRequest request = requests[0];
                 try {
-                    final AIResponse response = aiDataService.request(aiRequest);
+
+                    AIResponse response = null;
+
+                    // set contexts
+                    if (contexts != null) {
+                        RequestExtras requestExtras = new RequestExtras(contexts, null);
+                        response = aiDataService.request(aiRequest, requestExtras);
+                    } else {
+
+                        // start request without context
+                        response = aiDataService.request(aiRequest);
+                    }
+
                     return response;
                 } catch (AIServiceException e) {
                     Gson gson= new Gson();
