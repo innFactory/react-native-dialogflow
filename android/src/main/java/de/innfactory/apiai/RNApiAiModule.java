@@ -106,6 +106,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
                 if (contexts != null) {
                     RequestExtras requestExtras = new RequestExtras(contexts, null);
                     aiService.startListening(requestExtras);
+                    contexts = null;
                 } else {
 
                     // start listening without context
@@ -270,6 +271,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
                     if (contexts != null) {
                         RequestExtras requestExtras = new RequestExtras(contexts, null);
                         response = aiDataService.request(aiRequest, requestExtras);
+                        contexts = null;
                     } else {
 
                         // start request without context
