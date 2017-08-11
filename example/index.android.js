@@ -23,7 +23,7 @@ export default class App extends Component {
       console.log(ApiAi);
 
       ApiAi.setConfiguration(
-          "INSERT_YOUR_CLENT_ACCESS_TOKEN_HERE", ApiAi.LANG_GERMAN
+          "INSERT_YOUR_CLENT_ACCESS_TOKEN_HERE ", ApiAi.LANG_GERMAN
       );
   }
 
@@ -40,6 +40,17 @@ export default class App extends Component {
               <View style={{flex: 1, padding: 10}}>
                   <Button title="Start Listening" onPress={() => {
 
+/*
+                      const contexts = [{
+                                       "name": "greetings",
+                                       "lifespan": 3,
+                                       "parameters": {
+                                          "name": "Sam"
+                                       }
+                                    }];
+
+                      ApiAi.setContexts(contexts);
+                      */
 
                       ApiAi.onListeningStarted(() => {
                           this.setState({listeningState: "started"});

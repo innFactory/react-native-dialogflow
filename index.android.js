@@ -1,4 +1,11 @@
 'use strict';
 
 import { NativeModules } from 'react-native';
-module.exports = NativeModules.ApiAi;
+
+let ApiAi = NativeModules.ApiAi;
+
+ApiAi.setContexts = (contexts) => {
+    ApiAi.setContextsAsJson(JSON.stringify(contexts))
+}
+
+module.exports = ApiAi;

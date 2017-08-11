@@ -8,9 +8,11 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 import ai.api.AIListener;
 import ai.api.AIServiceException;
@@ -21,6 +23,8 @@ import ai.api.model.AIError;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 import ai.api.model.Result;
+import ai.api.model.AIContext;
+import ai.api.RequestExtras;
 
 /**
  * Created by Anton Spöck on 2017-07-21
@@ -53,6 +57,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
             AIConfiguration.SupportedLanguages.DEFAULT,
             AIConfiguration.RecognitionEngine.System);
     private AIDataService aiDataService;
+    private List<AIContext> contexts;
 
     private Callback onResultCallback;
     private Callback onErrorCallback;
@@ -77,6 +82,12 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
         config = new AIConfiguration(clientAccessToken, AIConfiguration.SupportedLanguages.fromLanguageTag(languageTag), AIConfiguration.RecognitionEngine.System);
     }
 
+    @ReactMethod
+    public void setContextsAsJson(String contextsAsJson) {
+        Gson gson= new Gson();
+        contexts = gson.fromJson(contextsAsJson, new TypeToken<List<AIContext>>(){}.getType());
+    }
+
 
     @ReactMethod
     public void startListening(Callback onResult, Callback onError){//, Callback onListeningStarted, Callback onListeningCanceled,  Callback onListeningFinished,  Callback onAudioLevel) {
@@ -90,7 +101,18 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
 
                 aiService = AIService.getService(getReactApplicationContext(), config);
                 aiService.setListener(RNApiAiModule.this);
-                aiService.startListening();
+
+                // set contexts
+                if (contexts != null) {
+                    RequestExtras requestExtras = new RequestExtras(contexts, null);
+                    aiService.startListening(requestExtras);
+                } else {
+
+                    // start listening without context
+                    aiService.startListening();
+                }
+
+
             }
         });
     }
