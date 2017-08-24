@@ -24,7 +24,10 @@ import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 import ai.api.model.Result;
 import ai.api.model.AIContext;
+import ai.api.model.Entity;
+import ai.api.model.EntityEntry;
 import ai.api.RequestExtras;
+
 
 /**
  * Created by Anton Spöck on 2017-07-21
@@ -58,7 +61,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
             AIConfiguration.RecognitionEngine.System);
     private AIDataService aiDataService;
     private List<AIContext> contexts;
-
+    private List<Entity> entities;
     private Callback onResultCallback;
     private Callback onErrorCallback;
     private Callback onListeningStartedCallback;
@@ -85,7 +88,14 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
     @ReactMethod
     public void setContextsAsJson(String contextsAsJson) {
         Gson gson= new Gson();
-        contexts = gson.fromJson(contextsAsJson, new TypeToken<List<AIContext>>(){}.getType());
+        contexts = gson.fromJson(contextsAsJson, new TypeToken<List<Entity>>(){}.getType());
+    }
+
+
+    @ReactMethod
+    public void setEntitiesAsJson(String userEntitiesAsJson) throws AIServiceException {
+        Gson gson= new Gson();
+        entities = gson.fromJson(userEntitiesAsJson, new TypeToken<List<Entity>>(){}.getType());
     }
 
 
@@ -103,10 +113,11 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
                 aiService.setListener(RNApiAiModule.this);
 
                 // set contexts
-                if (contexts != null) {
-                    RequestExtras requestExtras = new RequestExtras(contexts, null);
+                if (contexts != null || entities != null) {
+                    RequestExtras requestExtras = new RequestExtras(contexts, entities);
                     aiService.startListening(requestExtras);
                     contexts = null;
+                    entities = null;
                 } else {
 
                     // start listening without context
@@ -268,10 +279,11 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
                     AIResponse response = null;
 
                     // set contexts
-                    if (contexts != null) {
-                        RequestExtras requestExtras = new RequestExtras(contexts, null);
+                    if (contexts != null || entities != null) {
+                        RequestExtras requestExtras = new RequestExtras(contexts, entities);
                         response = aiDataService.request(aiRequest, requestExtras);
                         contexts = null;
+                        entities = null;
                     } else {
 
                         // start request without context

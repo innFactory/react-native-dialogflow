@@ -23,7 +23,7 @@ export default class App extends Component {
       console.log(ApiAi);
 
       ApiAi.setConfiguration(
-          "57b6ce865e6e4b138a74a88cfd8bc526", ApiAi.LANG_GERMAN
+          "INSERT_YOUR_CLIENT_ACCESS_TOKEN_HERE", ApiAi.LANG_GERMAN
       );
 
 
@@ -37,6 +37,23 @@ export default class App extends Component {
       }];
 
       ApiAi.setContexts(contexts);
+
+
+      const entities = [{
+          "name":"shop",
+          "extend":true,
+          "entries":[
+              {
+                  "value":"Media Markt",
+                  "synonyms":[
+                      "Media Markt",
+                  ]
+              }
+          ]
+      }];
+
+
+      ApiAi.setEntities(entities);
   }
 
 
