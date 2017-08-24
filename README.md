@@ -85,7 +85,7 @@ For using your own speech recognition:
 
 
 ### Contexts
-Set contexts (will take affect on next startListening or queryRequest):
+Set [contexts](https://api.ai/docs/reference/agent/contexts) (will take affect on next startListening or queryRequest):
 ```javascript
 const contexts = [{
   name: "deals",
@@ -97,6 +97,24 @@ const contexts = [{
 
 ApiAi.setContexts(contexts);
 ```
+
+### Entities
+Set [UserEntities](https://api.ai/docs/reference/agent/userentities) (will take affect on next startListening or queryRequest):
+```javascript
+const entities = [{
+  "name":"shop",
+  "extend":true,
+  "entries":[
+      {
+          "value":"Media Markt",
+          "synonyms":["Media Markt"]
+      }
+  ]
+ }];
+
+ ApiAi.setEntities(entities);
+```
+
 
 ### Events on Android
 Only in Android we have four additional methods: `onListeningStarted`, `onListeningCanceled`, `onListeningFinished` and `onAudioLevel`. In iOS they will be never called:
@@ -157,15 +175,16 @@ ApiAi.setConfiguration("4xxxxxxxe90xxxxxxxxc372", ApiAi.LANG_GERMAN);
 ## Methods
 | name                  | platform | param1    | param2    | param3    |
 | --------------------- | -------- | --------- | --------- | --------- |
-| `setConfiguration`    | both | clientAccessToken: String | languageTag: String | |
-| `startListening`      | both | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}  | |
-| `finishListening`      | ios |  |   | |
-| `requestQuery`           | both | query: String |  resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}   |
-| `onListeningStarted`            | android | callback: ()=>{}    | | |
-| `onListeningCanceled`            | android | callback: ()=>{}    || |
-| `onListeningFinished`            | android | callback: ()=>{}    | | |
-| `onAudioLevel`            | android | callback: (level: number)=>{}    || |
-| `setContexts`            | both | array    || |
+| `setConfiguration`    | both     | clientAccessToken: String | languageTag: String | |
+| `startListening`      | both     | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}  | |
+| `finishListening`     | ios      |  |   | |
+| `requestQuery`        | both     | query: String |  resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}   |
+| `onListeningStarted`  | android  | callback: ()=>{}    | | |
+| `onListeningCanceled` | android  | callback: ()=>{}    || |
+| `onListeningFinished` | android  | callback: ()=>{}    | | |
+| `onAudioLevel`        | android  | callback: (level: number)=>{}    || |
+| `setContexts`         | both     | array    || |
+| `setEntities`         | both     | array    || |
 
 
 ## Contributors
