@@ -161,12 +161,10 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
     @Override
     public void onResult(AIResponse response) {
 
-        final Result result = response.getResult();
-
         if (onResultCallback != null) {
             Gson gson = new Gson();
             try {
-                onResultCallback.invoke(gson.toJson(result));
+                onResultCallback.invoke(gson.toJson(response));
             } catch (Exception e) {
                 Log.e(TAG, e.getMessage(), e);
             }

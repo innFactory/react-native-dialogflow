@@ -23,7 +23,7 @@ export default class App extends Component {
       console.log(ApiAi);
 
       ApiAi.setConfiguration(
-          "INSERT_YOUR_CLIENT_ACCESS_TOKEN_HERE", ApiAi.LANG_GERMAN
+          "57b6ce865e6e4b138a74a88cfd8bc526", ApiAi.LANG_GERMAN
       );
 
 
@@ -87,6 +87,7 @@ export default class App extends Component {
                       });
 
                       ApiAi.startListening(result => {
+						  console.log(result);
                           this.setState({result: result});
                       }, error => {
                           this.setState({result: error});
