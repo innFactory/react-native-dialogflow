@@ -9,6 +9,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.facebook.react.bridge.Promise;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +20,7 @@ import ai.api.AIServiceException;
 import ai.api.android.AIConfiguration;
 import ai.api.android.AIDataService;
 import ai.api.android.AIService;
+import ai.api.android.SessionIdStorage;
 import ai.api.model.AIError;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
@@ -69,6 +71,8 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
     private Callback onListeningFinishedCallback;
     private Callback onAudioLevelCallback;
 
+    private String accessToken;
+
 
     public RNApiAiModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -82,25 +86,28 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
 
     @ReactMethod
     public void setConfiguration(String clientAccessToken, String languageTag) {
+        this.accessToken = clientAccessToken;
         config = new AIConfiguration(clientAccessToken, AIConfiguration.SupportedLanguages.fromLanguageTag(languageTag), AIConfiguration.RecognitionEngine.System);
     }
 
     @ReactMethod
     public void setContextsAsJson(String contextsAsJson) {
-        Gson gson= new Gson();
-        contexts = gson.fromJson(contextsAsJson, new TypeToken<List<Entity>>(){}.getType());
+        Gson gson = new Gson();
+        contexts = gson.fromJson(contextsAsJson, new TypeToken<List<Entity>>() {
+        }.getType());
     }
 
 
     @ReactMethod
     public void setEntitiesAsJson(String userEntitiesAsJson) throws AIServiceException {
-        Gson gson= new Gson();
-        entities = gson.fromJson(userEntitiesAsJson, new TypeToken<List<Entity>>(){}.getType());
+        Gson gson = new Gson();
+        entities = gson.fromJson(userEntitiesAsJson, new TypeToken<List<Entity>>() {
+        }.getType());
     }
 
 
     @ReactMethod
-    public void startListening(Callback onResult, Callback onError){//, Callback onListeningStarted, Callback onListeningCanceled,  Callback onListeningFinished,  Callback onAudioLevel) {
+    public void startListening(Callback onResult, Callback onError) {//, Callback onListeningStarted, Callback onListeningCanceled,  Callback onListeningFinished,  Callback onAudioLevel) {
 
         onResultCallback = onResult;
         onErrorCallback = onError;
@@ -135,9 +142,9 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
 
             public void run() {
 
-               if (aiService != null) {
-                   aiService.stopListening();
-               }
+                if (aiService != null) {
+                    aiService.stopListening();
+                }
             }
         });
     }
@@ -155,7 +162,6 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
             }
         });
     }
-
 
 
     @Override
@@ -267,7 +273,6 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
         aiRequest.setQuery(query);
 
 
-
         new AsyncTask<AIRequest, Void, AIResponse>() {
             @Override
             protected AIResponse doInBackground(AIRequest... requests) {
@@ -290,7 +295,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
 
                     return response;
                 } catch (AIServiceException e) {
-                    Gson gson= new Gson();
+                    Gson gson = new Gson();
                     try {
                         onErrorCallback.invoke(gson.toJson(e));
                     } catch (Exception e1) {
@@ -299,6 +304,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
                 }
                 return null;
             }
+
             @Override
             protected void onPostExecute(AIResponse aiResponse) {
                 if (aiResponse != null) {
@@ -306,6 +312,16 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
                 }
             }
         }.execute(aiRequest);
+    }
+
+    @ReactMethod
+    public void getAccessToken(Promise promise) {
+        promise.resolve(accessToken);
+    }
+
+    @ReactMethod
+    public void getSessionId(Promise promise) {
+        promise.resolve(SessionIdStorage.getSessionId(getReactApplicationContext()));
     }
 
     @Override

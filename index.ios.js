@@ -1,6 +1,7 @@
 
 import { NativeModules, NativeAppEventEmitter } from 'react-native';
 import {ApiAiClient} from 'api-ai-javascript';
+import ResetContextsRequest from './js/ResetContextsRequest';
 
 var SpeechToText = NativeModules.RNSpeechToTextIos;
 
@@ -54,6 +55,11 @@ class ApiAi {
     setContexts(contexts) {
         this.contexts = contexts;
     }
+
+    resetContexts(onResult: ()=>{}, onError: ()=>{}) {
+        let request = new ResetContextsRequest(this.client.getAccessToken(), this.client.getSessionId(), null);
+        request.perform().then(res=>onResult(res)).catch(err=>onError(err));
+    };
 
     setEntities(entities) {
         this.entities = entities;
