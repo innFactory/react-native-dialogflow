@@ -98,6 +98,15 @@ const contexts = [{
 ApiAi.setContexts(contexts);
 ```
 
+Reset all contexts for current session:
+```javascript
+ApiAi.resetContexts(result=>{
+       console.log(result);
+    }, error=>{
+       console.log(error);
+    });
+```
+
 ### Entities
 Set [UserEntities](https://api.ai/docs/reference/agent/userentities) (will take affect on next startListening or queryRequest):
 ```javascript
@@ -184,6 +193,7 @@ ApiAi.setConfiguration("4xxxxxxxe90xxxxxxxxc372", ApiAi.LANG_GERMAN);
 | `onListeningFinished` | android  | callback: ()=>{}    | | |
 | `onAudioLevel`        | android  | callback: (level: number)=>{}    || |
 | `setContexts`         | both     | array    || |
+| `resetContexts`       | both     | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{} | |
 | `setEntities`         | both     | array    || |
 
 
