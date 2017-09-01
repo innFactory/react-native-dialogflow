@@ -197,8 +197,11 @@ ApiAi.setConfiguration("4xxxxxxxe90xxxxxxxxc372", ApiAi.LANG_GERMAN);
 | `setEntities`         | both     | array    || |
 
 
-## Blogbeitrag
+## Blogpost
+
+### Deutsch 
 [Sprachsteuerung mit Api.ai in einer React-Native App](https://innfactory.de/de/blog/34-software-engineering/65-sprachsteuerung-mit-api-ai-in-einer-react-native-app)
+### English
 
 ## Contributors
 
