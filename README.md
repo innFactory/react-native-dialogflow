@@ -83,6 +83,17 @@ For using your own speech recognition:
    />
 ```
 
+### Request an Event
+For sending an [event](https://api.ai/docs/events) to api.ai _(Contexts and Entities have no effect!)_:
+```javascript
+ApiAi.requestEvent(
+    "WELCOME",
+    {param1: "yo mr. white!"},
+    result=>{console.log(result);},
+    error=>{console.log(error);}
+);
+```
+
 
 ### Contexts
 Set [contexts](https://api.ai/docs/reference/agent/contexts) (will take affect on next startListening or queryRequest):
@@ -125,7 +136,7 @@ const entities = [{
 ```
 
 
-### Events on Android
+### Listener for Android
 Only in Android we have four additional methods: `onListeningStarted`, `onListeningCanceled`, `onListeningFinished` and `onAudioLevel`. In iOS they will be never called:
 ```javascript
    <Button onPress={() => {

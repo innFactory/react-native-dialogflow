@@ -72,6 +72,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
     private Callback onAudioLevelCallback;
 
     private String accessToken;
+    private String languageTag;
 
 
     public RNApiAiModule(ReactApplicationContext reactContext) {
@@ -87,7 +88,13 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
     @ReactMethod
     public void setConfiguration(String clientAccessToken, String languageTag) {
         this.accessToken = clientAccessToken;
+        this.languageTag = languageTag;
         config = new AIConfiguration(clientAccessToken, AIConfiguration.SupportedLanguages.fromLanguageTag(languageTag), AIConfiguration.RecognitionEngine.System);
+    }
+
+    @ReactMethod
+    public void getLanguage(Promise promise) {
+        promise.resolve(languageTag);
     }
 
     @ReactMethod

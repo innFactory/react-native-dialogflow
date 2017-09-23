@@ -75,6 +75,10 @@ class ApiAi {
         }
     }
 
+    requestEvent(eventName, eventData = {}, onResult: ()=>{}, onError: ()=>{}) {
+        this.client.eventRequest(eventName, eventData, {}).then(res=>onResult(res)).catch(err=>onError(err));
+    }
+
     onAudioLevel(callback) {
 
     }
