@@ -347,7 +347,8 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
         } else if (contexts2 == null) {
             return contexts1;
         } else {
-            return contexts1.addAll(contexts2);
+            contexts1.addAll(contexts2)
+            return contexts1;
         }
     }
 
