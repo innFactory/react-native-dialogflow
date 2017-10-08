@@ -39,6 +39,16 @@ export default class App extends Component {
       ApiAi.setContexts(contexts);
 
 
+      const pcontexts = [{
+          "name": "config",
+          "parameters": {
+              "access_token": "42 yo 42 tiny rick"
+          }
+      }];
+
+      ApiAi.setPermanentContexts(pcontexts);
+
+
       const entities = [{
           "name":"shop",
           "extend":true,
