@@ -9,6 +9,18 @@ ApiAi.setContexts = (contexts) => {
     ApiAi.setContextsAsJson(JSON.stringify(contexts))
 };
 
+ApiAi.setPermanentContexts = (contexts) => {
+
+    // set lifespan to 1 if it's not set
+    contexts.forEach((c,i,a)=>{
+        if (!c.lifespan) {
+            a[i] = {...c, lifespan: 1};
+        }
+    });
+
+    ApiAi.setPermanentContextsAsJson(JSON.stringify(contexts))
+};
+
 ApiAi.resetContexts = async (onResult: ()=>{}, onError: ()=>{}) => {
     ApiAi.setContextsAsJson({});
 

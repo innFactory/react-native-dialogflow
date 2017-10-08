@@ -56,6 +56,17 @@ class ApiAi {
         this.contexts = contexts;
     }
 
+    setPermanentContexts(contexts) {
+        // set lifespan to 1 if it's not set
+        contexts.forEach((c,i,a)=>{
+            if (!c.lifespan) {
+                a[i] = {...c, lifespan: 1};
+            }
+        });
+
+        this.permanentContexts = contexts;
+    }
+
     resetContexts(onResult: ()=>{}, onError: ()=>{}) {
         let request = new ResetContextsRequest(this.client.getAccessToken(), this.client.getSessionId(), null);
         request.perform().then(res=>onResult(res)).catch(err=>onError(err));
@@ -66,8 +77,11 @@ class ApiAi {
     }
 
     requestQuery(query: String, onResult: ()=>{}, onError: ()=>{}) {
-        if (this.contexts || this.entities) {
-            this.client.textRequest(query, {contexts: this.contexts, entities: this.entities}).then(res=>onResult(res)).catch(err=>onError(err));
+        if (this.contexts || this.permanentContexts || this.entities) {
+            this.client.textRequest(query, {
+                contexts: this.mergeContexts(this.contexts, this.permanentContexts),
+                entities: this.entities}
+            ).then(res=>onResult(res)).catch(err=>onError(err));
             this.contexts = null;
             this.entities = null;
         } else {
@@ -81,6 +95,16 @@ class ApiAi {
 
     onAudioLevel(callback) {
 
+    }
+
+    mergeContexts(context1, context2) {
+        if (!context1) {
+            return context2;
+        } else if (!context2) {
+            return context1;
+        } else {
+            return [...context1, ...context2];
+        }
     }
 
     LANG_CHINESE_CHINA = "zh-CN";

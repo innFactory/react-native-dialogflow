@@ -14,6 +14,7 @@ import com.facebook.react.bridge.Promise;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
+import 	org.json.JSONObject;
 
 import ai.api.AIListener;
 import ai.api.AIServiceException;
@@ -63,6 +64,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
             AIConfiguration.RecognitionEngine.System);
     private AIDataService aiDataService;
     private List<AIContext> contexts;
+    private List<AiContext> permantentContexts;
     private List<Entity> entities;
     private Callback onResultCallback;
     private Callback onErrorCallback;
@@ -104,6 +106,13 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
         }.getType());
     }
 
+    @ReactMethod
+    public void setPermantentContextsAsJson(String contextsAsJson) {
+        Gson gson = new Gson();
+        permantentContexts = gson.fromJson(contextsAsJson, new TypeToken<List<Entity>>() {
+        }.getType());
+    }
+
 
     @ReactMethod
     public void setEntitiesAsJson(String userEntitiesAsJson) throws AIServiceException {
@@ -127,8 +136,8 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
                 aiService.setListener(RNApiAiModule.this);
 
                 // set contexts
-                if (contexts != null || entities != null) {
-                    RequestExtras requestExtras = new RequestExtras(contexts, entities);
+                if (contexts != null || permantentContexts != null || entities != null) {
+                    RequestExtras requestExtras = new RequestExtras(mergeContexts(contexts, permantentContexts), entities);
                     aiService.startListening(requestExtras);
                     contexts = null;
                     entities = null;
@@ -142,6 +151,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
             }
         });
     }
+
 
     @ReactMethod
     public void stopListening() {
@@ -177,7 +187,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
         if (onResultCallback != null) {
             Gson gson = new Gson();
             try {
-                onResultCallback.invoke(gson.toJson(response));
+                onResultCallback.invoke(new JSONObject(gson.toJson(response)));
             } catch (Exception e) {
                 Log.e(TAG, e.getMessage(), e);
             }
@@ -192,7 +202,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
             Gson gson = new Gson();
 
             try {
-                onErrorCallback.invoke(gson.toJson(error));
+                onErrorCallback.invoke(new JSONObject(gson.toJson(error)));
             } catch (Exception e) {
                 Log.e(TAG, e.getMessage(), e);
             }
@@ -289,8 +299,8 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
                     AIResponse response = null;
 
                     // set contexts
-                    if (contexts != null || entities != null) {
-                        RequestExtras requestExtras = new RequestExtras(contexts, entities);
+                    if (contexts != null || permantentContexts != null || entities != null) {
+                        RequestExtras requestExtras = new RequestExtras(mergeContexts(contexts, permantentContexts), entities);
                         response = aiDataService.request(aiRequest, requestExtras);
                         contexts = null;
                         entities = null;
@@ -304,7 +314,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
                 } catch (AIServiceException e) {
                     Gson gson = new Gson();
                     try {
-                        onErrorCallback.invoke(gson.toJson(e));
+                        onErrorCallback.invoke(new JSONObject(gson.toJson(e)));
                     } catch (Exception e1) {
                         Log.e(TAG, e.getMessage(), e);
                     }
@@ -329,6 +339,16 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
     @ReactMethod
     public void getSessionId(Promise promise) {
         promise.resolve(SessionIdStorage.getSessionId(getReactApplicationContext()));
+    }
+
+    private  List<AIContext> mergeContexts(List<AIContext> contexts1,  List<AIContext> contexts2) {
+        if (contexts1 == null) {
+            return context2;
+        } else if (contexts2 == null) {
+            return context1;
+        } else {
+            return contexts1.addAll(contexts2);
+        }
     }
 
     @Override

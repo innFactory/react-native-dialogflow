@@ -20,6 +20,7 @@ Add react-native-api-ai and link it:
 npm install --save react-native-api-ai
 
 react-native link react-native-api-ai
+react-native link react-native-speech-to-text-ios
 ```
 
 ### iOS: IMPORTANT xCode plist settings
@@ -109,13 +110,26 @@ const contexts = [{
 ApiAi.setContexts(contexts);
 ```
 
-Reset all contexts for current session:
+Reset all (non-permantent) contexts for current session:
 ```javascript
 ApiAi.resetContexts(result=>{
        console.log(result);
     }, error=>{
        console.log(error);
     });
+```
+
+Set permanent contexts, which will be set automatically before every request. This is useful for e.g. access tokens in webhooks:
+```javascript
+const permanentContexts = [{
+  name: "Auth",
+  // lifespan 1 is set automatically, but it's overrideable
+  parameters: {
+      AccessToken: "1234yo1234"
+  }
+}];
+
+ApiAi.setPermanentContexts(permanentContexts);
 ```
 
 ### Entities
@@ -205,6 +219,7 @@ ApiAi.setConfiguration("4xxxxxxxe90xxxxxxxxc372", ApiAi.LANG_GERMAN);
 | `onAudioLevel`        | android  | callback: (level: number)=>{}    || |
 | `setContexts`         | both     | array    || |
 | `resetContexts`       | both     | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{} | |
+| `setPermanentContexts`| both     | array    || |
 | `setEntities`         | both     | array    || |
 
 
