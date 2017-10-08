@@ -64,7 +64,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
             AIConfiguration.RecognitionEngine.System);
     private AIDataService aiDataService;
     private List<AIContext> contexts;
-    private List<AiContext> permantentContexts;
+    private List<AIContext> permantentContexts;
     private List<Entity> entities;
     private Callback onResultCallback;
     private Callback onErrorCallback;
