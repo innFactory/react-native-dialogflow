@@ -343,9 +343,9 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
 
     private  List<AIContext> mergeContexts(List<AIContext> contexts1,  List<AIContext> contexts2) {
         if (contexts1 == null) {
-            return context2;
+            return contexts2;
         } else if (contexts2 == null) {
-            return context1;
+            return contexts1;
         } else {
             return contexts1.addAll(contexts2);
         }
