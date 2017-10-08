@@ -5,6 +5,14 @@ import EventRequest from './js/ResetContextsRequest';
 
 let ApiAi = NativeModules.ApiAi;
 
+ApiAi.startListening = (onResult: ()=>{}, onError: ()=>{}) => {
+    ApiAi.startListeningNative((r)=>onResult(JSON.parse(r)), (e)=>onError(JSON.parse(e)))
+};
+
+ApiAi.requestQuery = (query: String, onResult: ()=>{}, onError: ()=>{}) => {
+    ApiAi.requestQueryNative(query, (r)=>onResult(JSON.parse(r)), (e)=>onError(JSON.parse(e)))
+};
+
 ApiAi.setContexts = (contexts) => {
     ApiAi.setContextsAsJson(JSON.stringify(contexts))
 };

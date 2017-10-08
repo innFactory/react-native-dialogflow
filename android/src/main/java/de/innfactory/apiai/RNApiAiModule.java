@@ -14,7 +14,6 @@ import com.facebook.react.bridge.Promise;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
-import 	org.json.JSONObject;
 
 import ai.api.AIListener;
 import ai.api.AIServiceException;
@@ -123,7 +122,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
 
 
     @ReactMethod
-    public void startListening(Callback onResult, Callback onError) {//, Callback onListeningStarted, Callback onListeningCanceled,  Callback onListeningFinished,  Callback onAudioLevel) {
+    public void startListeningNative(Callback onResult, Callback onError) {//, Callback onListeningStarted, Callback onListeningCanceled,  Callback onListeningFinished,  Callback onAudioLevel) {
 
         onResultCallback = onResult;
         onErrorCallback = onError;
@@ -187,7 +186,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
         if (onResultCallback != null) {
             Gson gson = new Gson();
             try {
-                onResultCallback.invoke(new JSONObject(gson.toJson(response)));
+                onResultCallback.invoke(gson.toJson(response));
             } catch (Exception e) {
                 Log.e(TAG, e.getMessage(), e);
             }
@@ -202,7 +201,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
             Gson gson = new Gson();
 
             try {
-                onErrorCallback.invoke(new JSONObject(gson.toJson(error)));
+                onErrorCallback.invoke(gson.toJson(error));
             } catch (Exception e) {
                 Log.e(TAG, e.getMessage(), e);
             }
@@ -277,7 +276,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
 
 
     @ReactMethod
-    public void requestQuery(String query, Callback onResult, Callback onError) {
+    public void requestQueryNative(String query, Callback onResult, Callback onError) {
 
         onResultCallback = onResult;
         onErrorCallback = onError;
@@ -314,7 +313,7 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
                 } catch (AIServiceException e) {
                     Gson gson = new Gson();
                     try {
-                        onErrorCallback.invoke(new JSONObject(gson.toJson(e)));
+                        onErrorCallback.invoke(gson.toJson(e));
                     } catch (Exception e1) {
                         Log.e(TAG, e.getMessage(), e);
                     }

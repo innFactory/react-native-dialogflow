@@ -88,9 +88,9 @@ export default class App extends Component {
 
                       ApiAi.startListening(result => {
 						  console.log(result);
-                          this.setState({result: result});
+                          this.setState({result: JSON.stringify(result)});
                       }, error => {
-                          this.setState({result: error});
+                          this.setState({result: JSON.stringify(error)});
                       });
 
                   }}/>
