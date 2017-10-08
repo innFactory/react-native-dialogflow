@@ -39,14 +39,14 @@ export default class App extends Component {
       ApiAi.setContexts(contexts);
 
 
-      const pcontexts = [{
+      const permanentContexts = [{
           "name": "config",
           "parameters": {
               "access_token": "42 yo 42 tiny rick"
           }
       }];
 
-      ApiAi.setPermanentContexts(pcontexts);
+      ApiAi.setPermanentContexts(permanentContexts);
 
 
       const entities = [{
@@ -68,6 +68,9 @@ export default class App extends Component {
 
 
   render() {
+      ApiAi.requestEvent("WELCOME", null, r=>console.log(r), e=>console.log(e));
+
+
       return (
           <View style={styles.container}>
 
