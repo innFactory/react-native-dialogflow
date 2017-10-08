@@ -207,12 +207,13 @@ ApiAi.setConfiguration("4xxxxxxxe90xxxxxxxxc372", ApiAi.LANG_GERMAN);
 * LANG_UKRAINIAN
 
 ## Methods
-| name                  | platform | param1    | param2    | param3    |
-| --------------------- | -------- | --------- | --------- | --------- |
+| name                  | platform | param1    | param2    | param3    | param4    |
+| --------------------- | -------- | --------- | --------- | --------- | --------- |
 | `setConfiguration`    | both     | clientAccessToken: String | languageTag: String | |
 | `startListening`      | both     | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}  | |
 | `finishListening`     | ios      |  |   | |
 | `requestQuery`        | both     | query: String |  resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}   |
+| `requestEvent`        | both     | eventName: String | eventData: Object | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}   |
 | `onListeningStarted`  | android  | callback: ()=>{}    | | |
 | `onListeningCanceled` | android  | callback: ()=>{}    || |
 | `onListeningFinished` | android  | callback: ()=>{}    | | |
