@@ -1,10 +1,10 @@
 {
-  "name": "react-native-api-ai",
-  "description": "A React-Native Bridge for the Google API AI SDK",
-  "version": "1.4.0",
+  "name": "react-native-dialogflow",
+  "description": "A React-Native Bridge for the Google Dialogflow SDK",
+  "version": "2.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/innFactory/react-native-api-ai"
+    "url": "https://github.com/innFactory/react-native-dialogflow"
   },
   "dependencies": {
     "api-ai-javascript": "^2.0.0-beta.14",
@@ -23,7 +23,8 @@
     "google",
     "voice",
     "speak",
-    "text-recognition"
+    "text-recognition",
+    "dialogflow"
   ],
   "author": "Anton Spöck (https://github.com/spoeck)",
   "license": "MIT"

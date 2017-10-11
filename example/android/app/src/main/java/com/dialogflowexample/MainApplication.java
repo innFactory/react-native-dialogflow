@@ -1,4 +1,4 @@
-package com.apiaiexample;
+package com.dialogflowexample;
 
 import android.app.Application;
 

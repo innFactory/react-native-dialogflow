@@ -8,7 +8,7 @@ import {
   Button
 } from 'react-native';
 
-import ApiAi from "react-native-api-ai"
+import ApiAi from "react-native-dialogflow"
 
 export default class App extends Component {
   constructor(props) {

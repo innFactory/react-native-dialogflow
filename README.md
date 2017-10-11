@@ -1,25 +1,27 @@
-# react-native-api-ai
+# react-native-dialogflow (react-native-api-ai)
 
 [![Build Status](https://travis-ci.org/innFactory/react-native-api-ai.svg?branch=master)](https://www.npmjs.com/package/react-native-api-ai)
 [![Version](https://img.shields.io/npm/v/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
 [![Downloads](https://img.shields.io/npm/dt/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
 
-A React-Native Bridge for the Google API AI SDK.
+<font size="50" color="red">Api.Ai has been renamed to Dialogflow on Ocotober 10 </font> [more info](https://blog.dialogflow.com/post/apiai-new-name-dialogflow-new-features/)
+
+A React-Native Bridge for the Google Dialogflow AI SDK.
 
 <img src="header_img.png" alt="Header Image"/>
 
 Support for iOS 10+ and Android!
 
 
-[api.ai](https://api.ai) is a powerful tool for building delightful and natural conversational experiences. You can build chat and speech bots and may intergrate it in a lot of platform like twitter, facebook, slack, or alexa.
+[Dialogflow](https://dialogflow.com/) is a powerful tool for building delightful and natural conversational experiences. You can build chat and speech bots and may intergrate it in a lot of platform like twitter, facebook, slack, or alexa.
 
 ## Install
 
-Add react-native-api-ai and link it:
+Add react-native-dialogflow and link it:
 ```
-npm install --save react-native-api-ai
+npm install --save react-native-dialogflow
 
-react-native link react-native-api-ai
+react-native link react-native-dialogflow
 react-native link react-native-speech-to-text-ios
 ```
 
@@ -38,9 +40,9 @@ Just right click on `Info.plist` -> `Open As` -> `Source Code` and paste these s
 Application will crash if you don't do this.
 
 ## Usage
-Import ApiAi:
+Import Dialogflow:
 ```javascript
-import ApiAi from "react-native-api-ai";
+import Dialogflow from "react-native-dialogflow";
 ```
 
 ### Configuration
@@ -49,8 +51,8 @@ Set the `clientAccessToken` and the language in your constructor:
  constructor(props) {
         super(props);
 
-        ApiAi.setConfiguration(
-          "4xxxxxxxe90xxxxxxxxc372", ApiAi.LANG_GERMAN
+        Dialogflow.setConfiguration(
+          "4xxxxxxxe90xxxxxxxxc372", Dialogflow.LANG_GERMAN
         );
     }
 
@@ -60,7 +62,7 @@ Set the `clientAccessToken` and the language in your constructor:
 Start listening with integrated speech recognition:
 ```javascript
    <Button onPress={() => {
-            ApiAi.startListening(result=>{
+            Dialogflow.startListening(result=>{
                 console.log(result);
             }, error=>{
                 console.log(error);
@@ -71,7 +73,7 @@ Start listening with integrated speech recognition:
 In iOS only you have to call `finishListening()`. Android detects the end of your speech automatically. That's the reason why we didn't implement the finish method in Android.
 ```javascript
 // only for iOS
-ApiAi.finishListening();
+Dialogflow.finishListening();
 // after this call your callbacks from the startListening will be executed.
 ```
 
@@ -79,15 +81,15 @@ ApiAi.finishListening();
 For using your own speech recognition:
 ```javascript
    <Button onPress={() => {
-           ApiAi.requestQuery("Some text for your api-ai agent", result=>console.log(result), error=>console.log(error));
+           Dialogflow.requestQuery("Some text for your Dialogflow agent", result=>console.log(result), error=>console.log(error));
         }}
    />
 ```
 
 ### Request an Event
-For sending an [event](https://api.ai/docs/events) to api.ai _(Contexts and Entities have no effect!)_:
+For sending an [event](https://api.ai/docs/events) to Dialogflow _(Contexts and Entities have no effect!)_:
 ```javascript
-ApiAi.requestEvent(
+Dialogflow.requestEvent(
     "WELCOME",
     {param1: "yo mr. white!"},
     result=>{console.log(result);},
@@ -107,12 +109,12 @@ const contexts = [{
   }
 }];
 
-ApiAi.setContexts(contexts);
+Dialogflow.setContexts(contexts);
 ```
 
 Reset all (non-permantent) contexts for current session:
 ```javascript
-ApiAi.resetContexts(result=>{
+Dialogflow.resetContexts(result=>{
        console.log(result);
     }, error=>{
        console.log(error);
@@ -129,7 +131,7 @@ const permanentContexts = [{
   }
 }];
 
-ApiAi.setPermanentContexts(permanentContexts);
+Dialogflow.setPermanentContexts(permanentContexts);
 ```
 
 ### Entities
@@ -146,7 +148,7 @@ const entities = [{
   ]
  }];
 
- ApiAi.setEntities(entities);
+ Dialogflow.setEntities(entities);
 ```
 
 
@@ -155,24 +157,24 @@ Only in Android we have four additional methods: `onListeningStarted`, `onListen
 ```javascript
    <Button onPress={() => {
 
-            ApiAi.onListeningStarted(()=>{
+            Dialogflow.onListeningStarted(()=>{
                 console.log("listening started");
             });
 
-            ApiAi.onListeningCanceled(()=>{
+            Dialogflow.onListeningCanceled(()=>{
                 console.log("listening canceled");
             });
 
-            ApiAi.onListeningFinished(()=>{
+            Dialogflow.onListeningFinished(()=>{
                 console.log("listening finished");
             });
 
-            ApiAi.onAudioLevel(level=>{
+            Dialogflow.onAudioLevel(level=>{
                 console.log(level);
             });
 
 
-            ApiAi.startListening(result=>{
+            Dialogflow.startListening(result=>{
                 console.log(result);
             }, error=>{
                 console.log(error);
@@ -186,7 +188,7 @@ Note: Make sure you are setting the callbacks before startListening every single
 ## Supported Languages
 Set the language in your configuration:
 ```javascript
-ApiAi.setConfiguration("4xxxxxxxe90xxxxxxxxc372", ApiAi.LANG_GERMAN);
+Dialogflow.setConfiguration("4xxxxxxxe90xxxxxxxxc372", Dialogflow.LANG_GERMAN);
 ```
 * LANG_CHINESE_CHINA
 * LANG_CHINESE_HONGKONG

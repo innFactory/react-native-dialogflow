@@ -5,7 +5,7 @@ import ResetContextsRequest from './js/ResetContextsRequest';
 
 var SpeechToText = NativeModules.RNSpeechToTextIos;
 
-class ApiAi {
+class Dialogflow {
 
 
     setConfiguration(clientAccessToken: String, languageTag: String) {
@@ -126,4 +126,4 @@ class ApiAi {
     LANG_UKRAINIAN = "uk";
 }
 
-export default new ApiAi();
+export default new Dialogflow();

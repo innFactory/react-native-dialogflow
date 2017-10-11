@@ -74,5 +74,6 @@ ApiAi.requestEvent = async (eventName: string, eventData: {}, onResult: () => {}
         })
         .catch(onError);
 };
-
+let Dialogflow = ApiAi;
 module.exports = ApiAi;
+module.exports = Dialogflow;

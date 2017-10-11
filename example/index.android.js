@@ -8,7 +8,7 @@ import {
   Button
 } from 'react-native';
 
-import ApiAi from "react-native-api-ai"
+import Dialogflow from "react-native-dialogflow"
 
 export default class App extends Component {
   constructor(props) {
@@ -20,10 +20,9 @@ export default class App extends Component {
           audioLevel: 0,
       };
 
-      console.log(ApiAi);
 
-      ApiAi.setConfiguration(
-          "57b6ce865e6e4b138a74a88cfd8bc526", ApiAi.LANG_GERMAN
+      Dialogflow.setConfiguration(
+          "57b6ce865e6e4b138a74a88cfd8bc526", Dialogflow.LANG_GERMAN
       );
 
 
@@ -36,7 +35,7 @@ export default class App extends Component {
           }
       }];
 
-      ApiAi.setContexts(contexts);
+      Dialogflow.setContexts(contexts);
 
 
       const permanentContexts = [{
@@ -46,7 +45,7 @@ export default class App extends Component {
           }
       }];
 
-      ApiAi.setPermanentContexts(permanentContexts);
+      Dialogflow.setPermanentContexts(permanentContexts);
 
 
       const entities = [{
@@ -63,12 +62,12 @@ export default class App extends Component {
       }];
 
 
-      ApiAi.setEntities(entities);
+      Dialogflow.setEntities(entities);
   }
 
 
   render() {
-      ApiAi.requestEvent("WELCOME", null, r=>console.log(r), e=>console.log(e));
+      Dialogflow.requestEvent("WELCOME", null, r=>console.log(r), e=>console.log(e));
 
 
       return (
@@ -83,23 +82,23 @@ export default class App extends Component {
                   <Button title="Start Listening" onPress={() => {
 
 
-                      ApiAi.onListeningStarted(() => {
+                      Dialogflow.onListeningStarted(() => {
                           this.setState({listeningState: "started"});
                       });
 
-                      ApiAi.onListeningCanceled(() => {
+                      Dialogflow.onListeningCanceled(() => {
                           this.setState({listeningState: "canceled"});
                       });
 
-                      ApiAi.onListeningFinished(() => {
+                      Dialogflow.onListeningFinished(() => {
                           this.setState({listeningState: "finished"});
                       });
 
-                      ApiAi.onAudioLevel(level => {
+                      Dialogflow.onAudioLevel(level => {
                           this.setState({audioLevel: level});
                       });
 
-                      ApiAi.startListening(result => {
+                      Dialogflow.startListening(result => {
 						  console.log(result);
                           this.setState({result: JSON.stringify(result)});
                       }, error => {
@@ -121,4 +120,4 @@ const styles = StyleSheet.create({
 
 });
 
-AppRegistry.registerComponent('ApiAiExample', () => App);
+AppRegistry.registerComponent('DialogflowExample', () => App);
