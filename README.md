@@ -4,7 +4,7 @@
 [![Version](https://img.shields.io/npm/v/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
 [![Downloads](https://img.shields.io/npm/dt/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
 
-<font size="50" color="red">Api.Ai has been renamed to Dialogflow on Ocotober 10 </font> [more info](https://blog.dialogflow.com/post/apiai-new-name-dialogflow-new-features/)
+<img width="90%" src="rename_warning.png" alt="Rename Warning"/>[more info](https://blog.dialogflow.com/post/apiai-new-name-dialogflow-new-features/)
 
 A React-Native Bridge for the Google Dialogflow AI SDK.
 
