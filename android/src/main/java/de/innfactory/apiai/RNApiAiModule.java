@@ -101,14 +101,14 @@ public class RNApiAiModule extends ReactContextBaseJavaModule implements AIListe
     @ReactMethod
     public void setContextsAsJson(String contextsAsJson) {
         Gson gson = new Gson();
-        contexts = gson.fromJson(contextsAsJson, new TypeToken<List<Entity>>() {
+        contexts = gson.fromJson(contextsAsJson, new TypeToken<List<AIContext>>() {
         }.getType());
     }
 
     @ReactMethod
     public void setPermanentContextsAsJson(String contextsAsJson) {
         Gson gson = new Gson();
-        permantentContexts = gson.fromJson(contextsAsJson, new TypeToken<List<Entity>>() {
+        permantentContexts = gson.fromJson(contextsAsJson, new TypeToken<List<AIContext>>() {
         }.getType());
     }
 
