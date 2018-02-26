@@ -1,16 +1,17 @@
 # react-native-dialogflow (react-native-api-ai)
 
-[![Build Status](https://travis-ci.org/innFactory/react-native-api-ai.svg?branch=master)](https://www.npmjs.com/package/react-native-api-ai)
-[![Version](https://img.shields.io/npm/v/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
-[![Downloads](https://img.shields.io/npm/dt/react-native-api-ai.svg)](https://www.npmjs.com/package/react-native-api-ai)
+[![Build Status](https://travis-ci.org/innFactory/react-native-dialogflow.svg?branch=master)](https://www.npmjs.com/package/react-native-api-ai)
+[![Version](https://img.shields.io/npm/v/react-native-dialogflow.svg)](https://www.npmjs.com/package/react-native-api-ai)
+[![Downloads](https://img.shields.io/npm/dt/react-native-dialogflow.svg)](https://www.npmjs.com/package/react-native-api-ai)
 
-<img width="90%" src="rename_warning.png" alt="Rename Warning"/>[more info](https://blog.dialogflow.com/post/apiai-new-name-dialogflow-new-features/)
 
 A React-Native Bridge for the Google Dialogflow AI SDK.
 
 <img src="header_img.png" alt="Header Image"/>
 
 Support for iOS 10+ and Android!
+
+We are currently working on dialogflow V2 support! (The beta will be published at 8.March 2018 at the latest)
 
 
 [Dialogflow](https://dialogflow.com/) is a powerful tool for building delightful and natural conversational experiences. You can build chat and speech bots and may intergrate it in a lot of platform like twitter, facebook, slack, or alexa.
