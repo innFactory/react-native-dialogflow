@@ -1,17 +1,18 @@
 /**
  * Created by toni on 30.08.2017.
  */
-import { ApiAiRequestError } from "api-ai-javascript/es6/Errors";
-import XhrRequest from 'api-ai-javascript/es6/XhrRequest';
-import {ApiAiConstants} from 'api-ai-javascript';
+import { ApiAiRequestError } from "./Errors";
+import XhrRequest from './XhrRequest';
+export const DEFAULT_BASE_URL = "https://api.api.ai/v1/";
+
 
 class ResetContextsRequest {
     constructor(accessToken, sessionId, contextName) {
 
         if (contextName != null) {
-            this.uri = ApiAiConstants.DEFAULT_BASE_URL + "contexts/" + contextName + "?sessionId=" + sessionId;
+            this.uri = DEFAULT_BASE_URL + "contexts/" + contextName + "?sessionId=" + sessionId;
         } else {
-            this.uri = ApiAiConstants.DEFAULT_BASE_URL + "contexts?sessionId=" + sessionId;
+            this.uri = DEFAULT_BASE_URL + "contexts?sessionId=" + sessionId;
         }
 
         this.headers = {

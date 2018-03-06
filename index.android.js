@@ -1,177 +1,38 @@
 'use strict';
 
-import { NativeModules, NativeAppEventEmitter } from 'react-native';
-import requestEvent from './js/ResetContextsRequest';
-import ResetContextsRequest from './js/ResetContextsRequest';
+import { NativeAppEventEmitter } from 'react-native';
 import Voice from './js/RCTVoice';
-export const DEFAULT_BASE_URL = "https://api.api.ai/v1/";
-export const DEFAULT_API_VERSION = "20150910";
-
-class Dialogflow {
-
-    setConfiguration(accessToken, languageTag) {
-        this.accessToken = accessToken;
-        this.languageTag = languageTag;
-        this.sessionId = this.sessionId ? this.sessionId : guid();
+import { Dialogflow } from './js/Dialogflow';
 
 
+var dialogflow = new Dialogflow();
 
-        Voice.onSpeechStart = () => (c) => this.onListeningStarted(c);
-        Voice.onSpeechEnd = () => (c) => this.onListeningFinished(c);
-    }
+dialogflow.setConfiguration = function (accessToken, languageTag) {
+    dialogflow.accessToken = accessToken;
+    dialogflow.languageTag = languageTag;
+    dialogflow.sessionId = dialogflow.sessionId ? dialogflow.sessionId : dialogflow.guid();
 
+    Voice.onSpeechStart = () => (c) => dialogflow.onListeningStarted(c);
+    Voice.onSpeechEnd = () => (c) => dialogflow.onListeningFinished(c);
+}
 
-    startListening(onResult, onError) {
+dialogflow.startListening = function (onResult, onError) {
 
-        this.subscription = NativeAppEventEmitter.addListener(
-            'onSpeechResults',
-            (result) => {
-                if (result.value) {
-                    console.log(result.value);
-                    this.requestQuery(result.value[0], onResult, onError);
-                }
-
+    dialogflow.subscription = NativeAppEventEmitter.addListener(
+        'onSpeechResults',
+        (result) => {
+            if (result.value) {
+                dialogflow.requestQuery(result.value[0], onResult, onError);
             }
-        );
 
-        Voice.start(this.languageTag);
-    }
-
-    finishListening() {
-        Voice.stopSpeech();
-    }
-
-    onListeningStarted(callback) {
-        callback();
-    }
-
-    onListeningCanceled(callback) {
-        callback();
-    }
-
-    onListeningFinished(callback) {
-        callback();
-    }
-
-    setContexts(contexts) {
-        this.contexts = contexts;
-    }
-
-    setPermanentContexts(contexts) {
-        // set lifespan to 1 if it's not set
-        contexts.forEach((c, i, a) => {
-            if (!c.lifespan) {
-                a[i] = { ...c, lifespan: 1 };
-            }
-        });
-
-        this.permanentContexts = contexts;
-    }
-
-    setEntities(entities) {
-        this.entities = entities;
-    }
-
-    onAudioLevel(callback) {
-
-    }
-
-    requestEvent = async (eventName, eventData, onResult, onError) => {
-
-        const data = {
-            "event": {
-                "name": eventName,
-                "data": {
-                    ...eventData
-                }
-            },
-            'lang': this.languageTag,
-            "sessionId": this.sessionId
-        };
-
-        fetch(DEFAULT_BASE_URL + "query?v=" + DEFAULT_API_VERSION, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + this.accessToken,
-                'charset': "utf-8"
-            },
-            body: JSON.stringify(data)
-        })
-            .then(function (response) {
-                var json = response.json().then(onResult)
-            })
-            .catch(onError);
-    };
-
-    requestQuery = async (query, onResult, onError) => {
-
-        const data = {
-            "contexts": this.mergeContexts(this.contexts, this.permanentContexts),
-            "query": query,
-            'lang': this.languageTag,
-            "sessionId": this.sessionId.toString()
-        };
-
-        fetch(DEFAULT_BASE_URL + "query?v=" + DEFAULT_API_VERSION, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + this.accessToken,
-                'charset': "utf-8"
-            },
-            body: JSON.stringify(data)
-        })
-            .then(function (response) {
-                var json = response.json().then(onResult)
-            })
-            .catch(onError);
-    };
-
-    mergeContexts(context1, context2) {
-        if (!context1) {
-            return context2;
-        } else if (!context2) {
-            return context1;
-        } else {
-            return [...context1, ...context2];
         }
-    }
+    );
 
-    resetContexts(onResult, onError) {
-        let request = new ResetContextsRequest(this.client.getAccessToken(), this.client.getSessionId(), null);
-        request.perform().then(res => onResult(res)).catch(err => onError(err));
-    };
-
-
-    LANG_CHINESE_CHINA = "zh-CN";
-    LANG_CHINESE_HONGKONG = "zh-HK";
-    LANG_CHINESE_TAIWAN = "zh-TW";
-    LANG_DUTCH = "nl";
-    LANG_ENGLISH = "en";
-    LANG_ENGLISH_GB = "en-GB";
-    LANG_ENGLISH_US = "en-US";
-    LANG_FRENCH = "fr";
-    LANG_GERMAN = "de";
-    LANG_ITALIAN = "it";
-    LANG_JAPANESE = "ja";
-    LANG_KOREAN = "ko";
-    LANG_PORTUGUESE = "pt";
-    LANG_PORTUGUESE_BRAZIL = "pt-BR";
-    LANG_RUSSIAN = "ru";
-    LANG_SPANISH = "es";
-    LANG_UKRAINIAN = "uk";
+    Voice.start(dialogflow.languageTag);
 }
 
-
-/**
-     * generates new random UUID
-     * @returns {string}
-     */
-function guid() {
-    const s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    return s4() + s4() + "-" + s4() + "-" + s4() + "-" +
-        s4() + "-" + s4() + s4() + s4();
+dialogflow.finishListening = function () {
+    Voice.stop();
 }
 
-export default new Dialogflow();
+export default dialogflow;
