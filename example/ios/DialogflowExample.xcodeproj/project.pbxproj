@@ -39,6 +39,7 @@
 		284F0A8F4AAD4A32A9774DE6 /* libApiAi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 753BB3796769437AAE1A5F9F /* libApiAi.a */; };
 		1DFE8FAE0FDE4622BC912003 /* ApiAiTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 220A0D9D6AA44F3E84A8D5BE /* ApiAiTests.xctest */; };
 		2F983728248F48EAAF42E623 /* libRNSpeechToTextIos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE6CFB7DE7BC4F4FAF8C1F13 /* libRNSpeechToTextIos.a */; };
+		FAF1B87F2F9B4949BC2919B0 /* libVoice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D48EF5898874065A9E69D0C /* libVoice.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -293,6 +294,9 @@
 		220A0D9D6AA44F3E84A8D5BE /* ApiAiTests.xctest */ = {isa = PBXFileReference; name = "ApiAiTests.xctest"; path = "ApiAiTests.xctest"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.cfbundle; explicitFileType = undefined; includeInIndex = 0; };
 		D12E6E2F53EC49A38DAAC2D0 /* RNSpeechToTextIos.xcodeproj */ = {isa = PBXFileReference; name = "RNSpeechToTextIos.xcodeproj"; path = "../node_modules/react-native-speech-to-text-ios/ios/RNSpeechToTextIos.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		BE6CFB7DE7BC4F4FAF8C1F13 /* libRNSpeechToTextIos.a */ = {isa = PBXFileReference; name = "libRNSpeechToTextIos.a"; path = "libRNSpeechToTextIos.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		D14F153D1B024D8BB7163933 /* Voice.xcodeproj */ = {isa = PBXFileReference; name = "Voice.xcodeproj"; path = "../node_modules/react-native-voice/ios/Voice.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		3D48EF5898874065A9E69D0C /* libVoice.a */ = {isa = PBXFileReference; name = "libVoice.a"; path = "libVoice.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		0DC002F0317E4C4C8316C10E /* Voice.xcodeproj */ = {isa = PBXFileReference; name = "Voice.xcodeproj"; path = "../node_modules/react-native-voice/ios/Voice.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +328,7 @@
 				284F0A8F4AAD4A32A9774DE6 /* libApiAi.a in Frameworks */,
 				1DFE8FAE0FDE4622BC912003 /* ApiAiTests.xctest in Resources */,
 				2F983728248F48EAAF42E623 /* libRNSpeechToTextIos.a in Frameworks */,
+				FAF1B87F2F9B4949BC2919B0 /* libVoice.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +508,8 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				F1822D62BEFA418D8F798C8D /* ApiAi.xcodeproj */,
 				D12E6E2F53EC49A38DAAC2D0 /* RNSpeechToTextIos.xcodeproj */,
+				D14F153D1B024D8BB7163933 /* Voice.xcodeproj */,
+				0DC002F0317E4C4C8316C10E /* Voice.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1076,11 +1083,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi/**",
 					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
 				);
 			};
 			name = Debug;
@@ -1104,11 +1114,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi/**",
 					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
 				);
 			};
 			name = Release;
@@ -1132,6 +1145,8 @@
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi/**",
 					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
 				);
 			};
 			name = Debug;
@@ -1154,6 +1169,8 @@
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi/**",
 					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
 				);
 			};
 			name = Release;
@@ -1186,11 +1203,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi/**",
 					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
 				);
 			};
 			name = Debug;
@@ -1223,11 +1243,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-dialogflow\ios\ApiAi/**",
 					"$(SRCROOT)\..\node_modules\react-native-speech-to-text-ios\ios",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
+					"$(SRCROOT)\..\node_modules\react-native-voice\ios\Voice",
 				);
 			};
 			name = Release;
@@ -1255,6 +1278,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1279,6 +1303,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

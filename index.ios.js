@@ -1,6 +1,6 @@
 
 import { NativeModules, NativeAppEventEmitter } from 'react-native';
-import {ApiAiClient} from 'api-ai-javascript';
+import { ApiAiClient } from 'api-ai-javascript';
 import ResetContextsRequest from './js/ResetContextsRequest';
 
 var SpeechToText = NativeModules.RNSpeechToTextIos;
@@ -8,24 +8,24 @@ var SpeechToText = NativeModules.RNSpeechToTextIos;
 class Dialogflow {
 
 
-    setConfiguration(clientAccessToken: String, languageTag: String) {
+    setConfiguration(clientAccessToken, languageTag) {
         this.language = languageTag;
-        this.client = new ApiAiClient({accessToken: clientAccessToken, apiLang: languageTag});
+        this.client = new ApiAiClient({ accessToken: clientAccessToken, apiLang: languageTag });
     }
 
-    onListeningStarted(callback: ()=>{}) {
-
-    }
-
-    onListeningCanceled(callback: ()=>{}) {
+    onListeningStarted(callback) {
 
     }
 
-    onListeningFinished(callback: ()=>{}) {
+    onListeningCanceled(callback) {
 
     }
 
-    startListening(onResult: ()=>{}, onError: ()=>{}) {
+    onListeningFinished(callback) {
+
+    }
+
+    startListening(onResult, onError) {
 
         this.subscription = NativeAppEventEmitter.addListener(
             'SpeechToText',
@@ -58,39 +58,40 @@ class Dialogflow {
 
     setPermanentContexts(contexts) {
         // set lifespan to 1 if it's not set
-        contexts.forEach((c,i,a)=>{
+        contexts.forEach((c, i, a) => {
             if (!c.lifespan) {
-                a[i] = {...c, lifespan: 1};
+                a[i] = { ...c, lifespan: 1 };
             }
         });
 
         this.permanentContexts = contexts;
     }
 
-    resetContexts(onResult: ()=>{}, onError: ()=>{}) {
+    resetContexts(onResult, onError) {
         let request = new ResetContextsRequest(this.client.getAccessToken(), this.client.getSessionId(), null);
-        request.perform().then(res=>onResult(res)).catch(err=>onError(err));
+        request.perform().then(res => onResult(res)).catch(err => onError(err));
     };
 
     setEntities(entities) {
         this.entities = entities;
     }
 
-    requestQuery(query: String, onResult: ()=>{}, onError: ()=>{}) {
+    requestQuery(query, onResult, onError) {
         if (this.contexts || this.permanentContexts || this.entities) {
             this.client.textRequest(query, {
                 contexts: this.mergeContexts(this.contexts, this.permanentContexts),
-                entities: this.entities}
-            ).then(res=>onResult(res)).catch(err=>onError(err));
+                entities: this.entities
+            }
+            ).then(res => onResult(res)).catch(err => onError(err));
             this.contexts = null;
             this.entities = null;
         } else {
-            this.client.textRequest(query).then(res=>onResult(res)).catch(err=>onError(err));
+            this.client.textRequest(query).then(res => onResult(res)).catch(err => onError(err));
         }
     }
 
-    requestEvent(eventName, eventData = {}, onResult: ()=>{}, onError: ()=>{}) {
-        this.client.eventRequest(eventName, eventData, {}).then(res=>onResult(res)).catch(err=>onError(err));
+    requestEvent(eventName, eventData = {}, onResult, onError) {
+        this.client.eventRequest(eventName, eventData, {}).then(res => onResult(res)).catch(err => onError(err));
     }
 
     onAudioLevel(callback) {

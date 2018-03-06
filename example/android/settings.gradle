@@ -1,4 +1,6 @@
 rootProject.name = 'DialogflowExample'
+include ':react-native-voice'
+project(':react-native-voice').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-voice/android')
 include ':react-native-dialogflow'
 project(':react-native-dialogflow').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-dialogflow/android')
 

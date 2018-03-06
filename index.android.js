@@ -1,79 +1,177 @@
 'use strict';
 
-import {NativeModules} from 'react-native';
+import { NativeModules, NativeAppEventEmitter } from 'react-native';
 import requestEvent from './js/ResetContextsRequest';
-import {ApiAiConstants} from 'api-ai-javascript';
+import ResetContextsRequest from './js/ResetContextsRequest';
+import Voice from './js/RCTVoice';
+export const DEFAULT_BASE_URL = "https://api.api.ai/v1/";
+export const DEFAULT_API_VERSION = "20150910";
 
-let ApiAi = NativeModules.ApiAi;
+class Dialogflow {
 
-ApiAi.startListening = (onResult: () => {}, onError: () => {}) => {
-    ApiAi.startListeningNative((r) => onResult(JSON.parse(r)), (e) => onError(JSON.parse(e)))
-};
+    setConfiguration(accessToken, languageTag) {
+        this.accessToken = accessToken;
+        this.languageTag = languageTag;
+        this.sessionId = this.sessionId ? this.sessionId : guid();
 
-ApiAi.requestQuery = (query: String, onResult: () => {}, onError: () => {}) => {
-    ApiAi.requestQueryNative(query, (r) => onResult(JSON.parse(r)), (e) => onError(JSON.parse(e)))
-};
 
-ApiAi.setContexts = (contexts) => {
-    ApiAi.setContextsAsJson(JSON.stringify(contexts))
-};
 
-ApiAi.setPermanentContexts = (contexts) => {
+        Voice.onSpeechStart = () => (c) => this.onListeningStarted(c);
+        Voice.onSpeechEnd = () => (c) => this.onListeningFinished(c);
+    }
 
-    // set lifespan to 1 if it's not set
-    contexts.forEach((c, i, a) => {
-        if (!c.lifespan) {
-            a[i] = {...c, lifespan: 1};
-        }
-    });
 
-    ApiAi.setPermanentContextsAsJson(JSON.stringify(contexts))
-};
+    startListening(onResult, onError) {
 
-ApiAi.resetContexts = async (onResult: () => {}, onError: () => {}) => {
-    ApiAi.setContextsAsJson({});
+        this.subscription = NativeAppEventEmitter.addListener(
+            'onSpeechResults',
+            (result) => {
+                if (result.value) {
+                    console.log(result.value);
+                    this.requestQuery(result.value[0], onResult, onError);
+                }
 
-    const accessToken = await ApiAi.getAccessToken();
-    const sessionId = await ApiAi.getSessionId();
-    let request = new ResetContextsRequest(accessToken, sessionId, null);
-    request.perform().then(res => onResult(res)).catch(err => onError(err));
-};
-
-ApiAi.setEntities = (entities) => {
-    ApiAi.setEntitiesAsJson(JSON.stringify(entities))
-};
-
-ApiAi.requestEvent = async (eventName: string, eventData: {}, onResult: () => {}, onError: () => {}) => {
-
-    const accessToken = await ApiAi.getAccessToken();
-    const sessionId = await ApiAi.getSessionId();
-    const languageTag = await ApiAi.getLanguage();
-
-    const data = {
-        "event": {
-            "name": eventName,
-            "data": {
-                ...eventData
             }
-        },
-        'lang': languageTag,
-        "sessionId": sessionId
+        );
+
+        Voice.start(this.languageTag);
+    }
+
+    finishListening() {
+        Voice.stopSpeech();
+    }
+
+    onListeningStarted(callback) {
+        callback();
+    }
+
+    onListeningCanceled(callback) {
+        callback();
+    }
+
+    onListeningFinished(callback) {
+        callback();
+    }
+
+    setContexts(contexts) {
+        this.contexts = contexts;
+    }
+
+    setPermanentContexts(contexts) {
+        // set lifespan to 1 if it's not set
+        contexts.forEach((c, i, a) => {
+            if (!c.lifespan) {
+                a[i] = { ...c, lifespan: 1 };
+            }
+        });
+
+        this.permanentContexts = contexts;
+    }
+
+    setEntities(entities) {
+        this.entities = entities;
+    }
+
+    onAudioLevel(callback) {
+
+    }
+
+    requestEvent = async (eventName, eventData, onResult, onError) => {
+
+        const data = {
+            "event": {
+                "name": eventName,
+                "data": {
+                    ...eventData
+                }
+            },
+            'lang': this.languageTag,
+            "sessionId": this.sessionId
+        };
+
+        fetch(DEFAULT_BASE_URL + "query?v=" + DEFAULT_API_VERSION, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + this.accessToken,
+                'charset': "utf-8"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(function (response) {
+                var json = response.json().then(onResult)
+            })
+            .catch(onError);
     };
 
-    fetch(ApiAiConstants.DEFAULT_BASE_URL + "query?v=" + ApiAiConstants.DEFAULT_API_VERSION, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + accessToken,
-            'charset': "utf-8"
-        },
-        body: JSON.stringify(data)
-    })
-        .then(function (response) {
-            var json = response.json().then(onResult)
+    requestQuery = async (query, onResult, onError) => {
+
+        const data = {
+            "contexts": this.mergeContexts(this.contexts, this.permanentContexts),
+            "query": query,
+            'lang': this.languageTag,
+            "sessionId": this.sessionId.toString()
+        };
+
+        fetch(DEFAULT_BASE_URL + "query?v=" + DEFAULT_API_VERSION, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + this.accessToken,
+                'charset': "utf-8"
+            },
+            body: JSON.stringify(data)
         })
-        .catch(onError);
-};
-let Dialogflow = ApiAi;
-module.exports = ApiAi;
-module.exports = Dialogflow;
+            .then(function (response) {
+                var json = response.json().then(onResult)
+            })
+            .catch(onError);
+    };
+
+    mergeContexts(context1, context2) {
+        if (!context1) {
+            return context2;
+        } else if (!context2) {
+            return context1;
+        } else {
+            return [...context1, ...context2];
+        }
+    }
+
+    resetContexts(onResult, onError) {
+        let request = new ResetContextsRequest(this.client.getAccessToken(), this.client.getSessionId(), null);
+        request.perform().then(res => onResult(res)).catch(err => onError(err));
+    };
+
+
+    LANG_CHINESE_CHINA = "zh-CN";
+    LANG_CHINESE_HONGKONG = "zh-HK";
+    LANG_CHINESE_TAIWAN = "zh-TW";
+    LANG_DUTCH = "nl";
+    LANG_ENGLISH = "en";
+    LANG_ENGLISH_GB = "en-GB";
+    LANG_ENGLISH_US = "en-US";
+    LANG_FRENCH = "fr";
+    LANG_GERMAN = "de";
+    LANG_ITALIAN = "it";
+    LANG_JAPANESE = "ja";
+    LANG_KOREAN = "ko";
+    LANG_PORTUGUESE = "pt";
+    LANG_PORTUGUESE_BRAZIL = "pt-BR";
+    LANG_RUSSIAN = "ru";
+    LANG_SPANISH = "es";
+    LANG_UKRAINIAN = "uk";
+}
+
+
+/**
+     * generates new random UUID
+     * @returns {string}
+     */
+function guid() {
+    const s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    return s4() + s4() + "-" + s4() + "-" + s4() + "-" +
+        s4() + "-" + s4() + s4() + s4();
+}
+
+export default new Dialogflow();
