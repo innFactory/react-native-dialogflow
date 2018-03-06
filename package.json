@@ -7,7 +7,6 @@
     "url": "https://github.com/innFactory/react-native-dialogflow"
   },
   "dependencies": {
-    "api-ai-javascript": "^2.0.0-beta.14",
     "react-native-speech-to-text-ios": "^1.0.4",
     "react-native-voice": "^0.2.6"
   },
