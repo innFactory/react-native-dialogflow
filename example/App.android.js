@@ -7,7 +7,7 @@ import {
   Button
 } from 'react-native';
 
-import Dialogflow from "react-native-dialogflow"
+import Dialogflow, { Dialogflow_V2 } from "react-native-dialogflow"
 
 export default class App extends Component {
   constructor(props) {
@@ -24,6 +24,12 @@ export default class App extends Component {
       "57b6ce865e6e4b138a74a88cfd8bc526", Dialogflow.LANG_GERMAN
     );
 
+    Dialogflow_V2.setConfiguration(
+      "ya29.c.El92BV4aRCnGyaJ0VWKF0ewGNprivoW68g9lm0IrbsIi7T9m3QEL-JoPnfq3tWU07WhAjmIhD14z6X-1d8N_jzLz7o_8sB-c5OgAJE4cswJPoOzixZDTmCBvMbD901_0RA",
+      Dialogflow_V2.LANG_GERMAN,
+      'testv2-3b5ca'
+    );
+
 
 
     const contexts = [{
@@ -34,7 +40,17 @@ export default class App extends Component {
       }
     }];
 
+
+    const contexts_V2 = [{
+      "name": "deals",
+      "lifespanCount": 1,
+      "parameters": {
+        "name": "Sam"
+      }
+    }];
+
     Dialogflow.setContexts(contexts);
+    //Dialogflow_V2.setContexts(contexts_V2);
 
 
     const permanentContexts = [{
@@ -44,7 +60,15 @@ export default class App extends Component {
       }
     }];
 
+    const permanentContexts_V2 = [{
+      "name": "config",
+      "parameters": {
+        "access_token": "42 yo 42 tiny rick"
+      }
+    }];
+
     Dialogflow.setPermanentContexts(permanentContexts);
+    //Dialogflow_V2.setPermanentContexts(permanentContexts_V2);
 
 
     const entities = [{
@@ -62,11 +86,13 @@ export default class App extends Component {
 
 
     Dialogflow.setEntities(entities);
+    Dialogflow_V2.setEntities(entities);
   }
 
 
   render() {
     Dialogflow.requestEvent("WELCOME", null, r => console.log(r), e => console.log(e));
+    Dialogflow_V2.requestEvent("WELCOME", null, r => console.log(r), e => console.log(e));
 
 
     return (
@@ -81,6 +107,7 @@ export default class App extends Component {
           <Button title="Start Listening" onPress={() => {
 
 
+            // V1
             Dialogflow.onListeningStarted(() => {
               this.setState({ listeningState: "started" });
             });
@@ -103,7 +130,32 @@ export default class App extends Component {
             }, error => {
               this.setState({ result: JSON.stringify(error) });
             });
+          }} />
 
+          <Button color="orange" title="Start Listening V2" onPress={() => {
+            // V2 
+            Dialogflow_V2.onListeningStarted(() => {
+              this.setState({ listeningState: "started" });
+            });
+
+            Dialogflow_V2.onListeningCanceled(() => {
+              this.setState({ listeningState: "canceled" });
+            });
+
+            Dialogflow_V2.onListeningFinished(() => {
+              this.setState({ listeningState: "finished" });
+            });
+
+            Dialogflow_V2.onAudioLevel(level => {
+              this.setState({ audioLevel: level });
+            });
+
+            Dialogflow_V2.startListening(result => {
+              console.log(result);
+              this.setState({ result: JSON.stringify(result) });
+            }, error => {
+              this.setState({ result: JSON.stringify(error) });
+            });
           }} />
         </View>
       </View>

@@ -3,8 +3,11 @@
 import { NativeAppEventEmitter } from 'react-native';
 import Voice from './js/RCTVoice';
 import { Dialogflow } from './js/Dialogflow';
+import { Dialogflow_V2 } from './js/Dialogflow_V2';
 
-
+/**
+ *  DIALOGFLOW V1
+ */
 var dialogflow = new Dialogflow();
 
 dialogflow.setConfiguration = function (accessToken, languageTag) {
@@ -36,3 +39,40 @@ dialogflow.finishListening = function () {
 }
 
 export default dialogflow;
+
+
+/**
+ * DIALOGFLOW V2
+ */
+var dialogflow2 = new Dialogflow_V2();
+
+dialogflow2.setConfiguration = function (accessToken, languageTag, projectId) {
+    dialogflow2.accessToken = accessToken;
+    dialogflow2.languageTag = languageTag;
+    dialogflow2.projectId = projectId;
+    dialogflow2.sessionId = dialogflow2.sessionId ? dialogflow2.sessionId : dialogflow2.guid();
+
+    Voice.onSpeechStart = () => (c) => dialogflow2.onListeningStarted(c);
+    Voice.onSpeechEnd = () => (c) => dialogflow2.onListeningFinished(c);
+}
+
+dialogflow2.startListening = function (onResult, onError) {
+
+    dialogflow2.subscription = NativeAppEventEmitter.addListener(
+        'onSpeechResults',
+        (result) => {
+            if (result.value) {
+                dialogflow2.requestQuery(result.value[0], onResult, onError);
+            }
+
+        }
+    );
+
+    Voice.start(dialogflow2.languageTag);
+}
+
+dialogflow2.finishListening = function () {
+    Voice.stop();
+}
+
+export { dialogflow2 as Dialogflow_V2 }
