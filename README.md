@@ -11,9 +11,6 @@ A React-Native Bridge for the Google Dialogflow AI SDK.
 
 Support for iOS 10+ and Android!
 
-We are currently working on dialogflow V2 support! (Last Update: 07.March 2018)
-
-
 [Dialogflow](https://dialogflow.com/) is a powerful tool for building delightful and natural conversational experiences. You can build chat and speech bots and may intergrate it in a lot of platform like twitter, facebook, slack, or alexa.
 
 ## Install
@@ -24,7 +21,6 @@ npm install --save react-native-dialogflow
 
 react-native link react-native-dialogflow
 react-native link react-native-speech-to-text-ios
-# for V2
 react-native link react-native-voice
 
 ```
