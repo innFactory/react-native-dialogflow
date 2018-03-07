@@ -1,7 +1,7 @@
 {
   "name": "react-native-dialogflow",
   "description": "A React-Native Bridge for the Google Dialogflow SDK",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/innFactory/react-native-dialogflow"
