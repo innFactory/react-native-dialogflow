@@ -24,7 +24,9 @@ npm install --save react-native-dialogflow
 
 react-native link react-native-dialogflow
 react-native link react-native-speech-to-text-ios
+# for V2
 react-native link react-native-voice
+
 ```
 
 ### iOS: IMPORTANT xCode plist settings
@@ -46,9 +48,13 @@ Import Dialogflow:
 ```javascript
 import Dialogflow from "react-native-dialogflow";
 ```
+or for V2
+```javascript
+import { Dialogflow_V2 } from "react-native-dialogflow"
+```
 
 ### Configuration
-Set the `clientAccessToken` and the language in your constructor:
+Set the `accessToken` and the language in your constructor:
 ```javascript
  constructor(props) {
         super(props);
@@ -59,6 +65,19 @@ Set the `clientAccessToken` and the language in your constructor:
     }
 
 ```
+
+For V2 you can set the OAUTH accessToken of the (auth setup)[https://dialogflow.com/docs/reference/v2-auth-setup]. In addition you have to set your projectId:
+```javascript
+ constructor(props) {
+        super(props);
+
+        Dialogflow_V2.setConfiguration(
+          "4xxxxxxxe90xxxxxxxxc372", Dialogflow.LANG_GERMAN, 'testV2-3a5bc'
+        );
+    }
+
+```
+
 
 ### Listening
 Start listening with integrated speech recognition:
@@ -213,7 +232,7 @@ Dialogflow.setConfiguration("4xxxxxxxe90xxxxxxxxc372", Dialogflow.LANG_GERMAN);
 ## Methods
 | name                  | platform | param1    | param2    | param3    | param4    |
 | --------------------- | -------- | --------- | --------- | --------- | --------- |
-| `setConfiguration`    | both     | clientAccessToken: String | languageTag: String | |
+| `setConfiguration`    | both     | accessToken: String | languageTag: String | (V2 only: projectId) |
 | `startListening`      | both     | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}  | |
 | `finishListening`     | ios      |  |   | |
 | `requestQuery`        | both     | query: String |  resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}   |
@@ -225,7 +244,7 @@ Dialogflow.setConfiguration("4xxxxxxxe90xxxxxxxxc372", Dialogflow.LANG_GERMAN);
 | `setContexts`         | both     | array    || |
 | `resetContexts`       | both     | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{} | |
 | `setPermanentContexts`| both     | array    || |
-| `setEntities`         | both     | array    || |
+| `setEntities` (V1 only)| both     | array    || |
 
 
 ## Blogpost

@@ -4,7 +4,6 @@ import { NativeModules, NativeAppEventEmitter } from 'react-native';
 import requestEvent from './ResetContextsRequest';
 import ResetContextsRequest from './ResetContextsRequest';
 export const DEFAULT_BASE_URL = "https://dialogflow.googleapis.com/v2beta1/projects/";
-export const lol = "testv2-3b5ca/agent/sessions/0:detectIntent";
 
 export class Dialogflow_V2 {
 
@@ -21,16 +20,20 @@ export class Dialogflow_V2 {
     }
 
     setContexts(contexts) {
-        this.contexts = contexts;
+        var array = contexts;
 
-        contexts.forEach(c => {
-            this.createContext(c);
+        array.forEach((c, i, a) => {
+            a[i] = this.normalizeContext(c);
         })
+
+        this.contexts = array;
     }
 
     setPermanentContexts(contexts) {
         // set lifespan to 1 if it's not set
         contexts.forEach((c, i, a) => {
+            a[i] = this.normalizeContext(c);
+
             if (!c.lifespanCount) {
                 a[i] = { ...c, lifespanCount: 1 };
             }
@@ -39,21 +42,33 @@ export class Dialogflow_V2 {
         this.permanentContexts = contexts;
     }
 
+    normalizeContext(context) {
+        // rename property lifespan to lifespanCount
+        if (context.lifespan) {
+            context.lifespanCount = context.lifespan;
+            delete context.lifespan;
+        }
+
+        // add context name path: projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>
+        // https://dialogflow.com/docs/reference/api-v2/rest/v2beta1/projects.agent.sessions.contexts#Context
+        if (!context.name.startsWith("projects/")) {
+            context.name = "projects/" + this.projectId + "/agent/sessions/" + this.sessionId + "/contexts/" + context.name;
+        }
+
+        return context;
+    }
+
+    /*
     setEntities(entities) {
         this.entities = entities;
     }
+    */
 
     onAudioLevel(callback) {
 
     }
 
     requestEvent = async (eventName, eventParameters, onResult, onError) => {
-
-        /*
-        this.permanentContexts.forEach(c => {
-            this.createContext(c);
-        })
-        */
 
         const data = {
             "queryParams": {
@@ -90,12 +105,6 @@ export class Dialogflow_V2 {
 
     requestQuery = async (query, onResult, onError) => {
 
-        /*
-        this.permanentContexts.forEach(c => {
-            this.createContext(c);
-        })
-        */
-
         const data = {
             "queryParams": {
                 "contexts": this.mergeContexts(this.contexts, this.permanentContexts),
@@ -125,31 +134,6 @@ export class Dialogflow_V2 {
                 var json = response.json().then(onResult)
             })
             .catch(onError);
-    };
-
-    /**
-   * https://dialogflow.com/docs/reference/api-v2/rest/v2beta1/projects.agent.sessions.contexts
-   * 
-   * @param {*} context 
-   */
-    createContext = async (context) => {
-
-        const data = context;
-
-        try {
-            const response = await fetch(DEFAULT_BASE_URL + this.projectId + "/agent/sessions/" + this.sessionId + "/contexts:create", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + this.accessToken,
-                    'charset': "utf-8"
-                },
-                body: JSON.stringify(data)
-            });
-            console.log(response);
-        } catch (error) {
-            console.log(error);
-        }
     };
 
 

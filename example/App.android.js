@@ -25,7 +25,7 @@ export default class App extends Component {
     );
 
     Dialogflow_V2.setConfiguration(
-      "ya29.c.El92BV4aRCnGyaJ0VWKF0ewGNprivoW68g9lm0IrbsIi7T9m3QEL-JoPnfq3tWU07WhAjmIhD14z6X-1d8N_jzLz7o_8sB-c5OgAJE4cswJPoOzixZDTmCBvMbD901_0RA",
+      "ya29.c.El93BfD5CZBWUrPJAyUdfWuHkmdzyjo0seL56z-reryvae4j8oVwLO38ARqrpj0Q5LxeUTndPLrA6GYPx4CyrlVmJRKvq_Dtwl9OO0zxiWTVK7boCV-aCVJVHbaFSGstgA",
       Dialogflow_V2.LANG_GERMAN,
       'testv2-3b5ca'
     );
@@ -41,16 +41,9 @@ export default class App extends Component {
     }];
 
 
-    const contexts_V2 = [{
-      "name": "deals",
-      "lifespanCount": 1,
-      "parameters": {
-        "name": "Sam"
-      }
-    }];
 
     Dialogflow.setContexts(contexts);
-    //Dialogflow_V2.setContexts(contexts_V2);
+    Dialogflow_V2.setContexts(contexts);
 
 
     const permanentContexts = [{
@@ -60,15 +53,9 @@ export default class App extends Component {
       }
     }];
 
-    const permanentContexts_V2 = [{
-      "name": "config",
-      "parameters": {
-        "access_token": "42 yo 42 tiny rick"
-      }
-    }];
 
     Dialogflow.setPermanentContexts(permanentContexts);
-    //Dialogflow_V2.setPermanentContexts(permanentContexts_V2);
+    Dialogflow_V2.setPermanentContexts(permanentContexts);
 
 
     const entities = [{
