@@ -11,7 +11,7 @@ A React-Native Bridge for the Google Dialogflow AI SDK.
 
 Support for iOS 10+ and Android!
 
-We are currently working on dialogflow V2 support! (Last Update: 06.March 2018)
+We are currently working on dialogflow V2 support! (Last Update: 07.March 2018)
 
 
 [Dialogflow](https://dialogflow.com/) is a powerful tool for building delightful and natural conversational experiences. You can build chat and speech bots and may intergrate it in a lot of platform like twitter, facebook, slack, or alexa.
@@ -66,7 +66,7 @@ Set the `accessToken` and the language in your constructor:
 
 ```
 
-For V2 you can set the OAUTH accessToken of the (auth setup)[https://dialogflow.com/docs/reference/v2-auth-setup]. In addition you have to set your projectId:
+For V2 you can set the OAUTH accessToken of the [auth setup](https://dialogflow.com/docs/reference/v2-auth-setup). In addition you have to set your projectId:
 ```javascript
  constructor(props) {
         super(props);
@@ -232,7 +232,7 @@ Dialogflow.setConfiguration("4xxxxxxxe90xxxxxxxxc372", Dialogflow.LANG_GERMAN);
 ## Methods
 | name                  | platform | param1    | param2    | param3    | param4    |
 | --------------------- | -------- | --------- | --------- | --------- | --------- |
-| `setConfiguration`    | both     | accessToken: String | languageTag: String | (V2 only: projectId) |
+| `setConfiguration`    | both     | accessToken: String | languageTag: String | (V2 only) projectId: String |
 | `startListening`      | both     | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}  | |
 | `finishListening`     | ios      |  |   | |
 | `requestQuery`        | both     | query: String |  resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}   |
