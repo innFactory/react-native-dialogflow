@@ -90,7 +90,7 @@ export class Dialogflow_V2 {
         fetch(DEFAULT_BASE_URL + this.projectId + "/agent/sessions/" + this.sessionId + ":detectIntent", {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json; charset=utf-8',
                 'Authorization': 'Bearer ' + this.accessToken,
                 'charset': "utf-8"
             },
@@ -124,7 +124,7 @@ export class Dialogflow_V2 {
         fetch(DEFAULT_BASE_URL + this.projectId + "/agent/sessions/" + this.sessionId + ":detectIntent", {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json; charset=utf-8',
                 'Authorization': 'Bearer ' + this.accessToken,
                 'charset': "utf-8"
             },

@@ -59,7 +59,7 @@ export class Dialogflow {
         fetch(DEFAULT_BASE_URL + "query?v=" + DEFAULT_API_VERSION, {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json; charset=utf-8',
                 'Authorization': 'Bearer ' + this.accessToken,
                 'charset': "utf-8"
             },
@@ -86,7 +86,7 @@ export class Dialogflow {
         fetch(DEFAULT_BASE_URL + "query?v=" + DEFAULT_API_VERSION, {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json; charset=utf-8',
                 'Authorization': 'Bearer ' + this.accessToken,
                 'charset': "utf-8"
             },
