@@ -66,12 +66,13 @@ dialogflow2.startListening = function (onResult, onError) {
         (result) => {
 
             if (result.error) {
-                onError(result.error);
-            } else {
-                if (result.isFinal) {
-                    dialogflow2.requestQuery(result.bestTranscription.formattedString, onResult, onError);
-                }
-
+              onError(result.error);
+            }
+            else if (result.isFinal) {
+              dialogflow2.requestQuery(result.bestTranscription.formattedString, onResult, onError);
+            }
+            else {
+              onUpdate(result.bestTranscription.formattedString);
             }
 
         }
