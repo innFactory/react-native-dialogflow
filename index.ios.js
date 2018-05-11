@@ -59,7 +59,7 @@ dialogflow2.setConfiguration = function (accessToken, languageTag, projectId) {
     dialogflow2.sessionId = dialogflow2.sessionId ? dialogflow2.sessionId : dialogflow2.guid();
 }
 
-dialogflow2.startListening = function (onResult, onError) {
+dialogflow2.startListening = function (onResult, onError, onUpdate) {
 
     dialogflow2.subscription = NativeAppEventEmitter.addListener(
         'SpeechToText',
