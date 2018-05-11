@@ -18,7 +18,7 @@ dialogflow.setConfiguration = function (accessToken, languageTag) {
 }
 
 
-dialogflow.startListening = function (onResult, onError) {
+dialogflow.startListening = function (onResult, onError, onUpdate) {
 
     this.subscription = NativeAppEventEmitter.addListener(
         'SpeechToText',
@@ -26,13 +26,13 @@ dialogflow.startListening = function (onResult, onError) {
 
             if (result.error) {
                 onError(result.error);
-            } else {
-                if (result.isFinal) {
-                    this.requestQuery(result.bestTranscription.formattedString, onResult, onError);
-                }
-
             }
-
+            else if (result.isFinal) {
+                this.requestQuery(result.bestTranscription.formattedString, onResult, onError);
+            }
+            else {
+              onUpdate(result.bestTranscription.formattedString);
+            }
         }
     );
 
