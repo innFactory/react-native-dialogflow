@@ -30,8 +30,8 @@ dialogflow.startListening = function (onResult, onError, onUpdate) {
             else if (result.isFinal) {
                 this.requestQuery(result.bestTranscription.formattedString, onResult, onError);
             }
-            else {
-              onUpdate(result.bestTranscription.formattedString);
+            else if (onUpdate) {
+                onUpdate(result.bestTranscription.formattedString);
             }
         }
     );
@@ -66,13 +66,13 @@ dialogflow2.startListening = function (onResult, onError, onUpdate) {
         (result) => {
 
             if (result.error) {
-              onError(result.error);
+                onError(result.error);
             }
             else if (result.isFinal) {
-              dialogflow2.requestQuery(result.bestTranscription.formattedString, onResult, onError);
+                dialogflow2.requestQuery(result.bestTranscription.formattedString, onResult, onError);
             }
-            else {
-              onUpdate(result.bestTranscription.formattedString);
+            else if (onUpdate) {
+                onUpdate(result.bestTranscription.formattedString);
             }
 
         }
