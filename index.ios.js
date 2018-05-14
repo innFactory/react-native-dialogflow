@@ -18,7 +18,7 @@ dialogflow.setConfiguration = function (accessToken, languageTag) {
 }
 
 
-dialogflow.startListening = function (onResult, onError) {
+dialogflow.startListening = function (onResult, onError, onUpdate) {
 
     this.subscription = NativeAppEventEmitter.addListener(
         'SpeechToText',
@@ -26,13 +26,13 @@ dialogflow.startListening = function (onResult, onError) {
 
             if (result.error) {
                 onError(result.error);
-            } else {
-                if (result.isFinal) {
-                    this.requestQuery(result.bestTranscription.formattedString, onResult, onError);
-                }
-
             }
-
+            else if (result.isFinal) {
+                this.requestQuery(result.bestTranscription.formattedString, onResult, onError);
+            }
+            else {
+              onUpdate(result.bestTranscription.formattedString);
+            }
         }
     );
 
@@ -59,19 +59,20 @@ dialogflow2.setConfiguration = function (accessToken, languageTag, projectId) {
     dialogflow2.sessionId = dialogflow2.sessionId ? dialogflow2.sessionId : dialogflow2.guid();
 }
 
-dialogflow2.startListening = function (onResult, onError) {
+dialogflow2.startListening = function (onResult, onError, onUpdate) {
 
     dialogflow2.subscription = NativeAppEventEmitter.addListener(
         'SpeechToText',
         (result) => {
 
             if (result.error) {
-                onError(result.error);
-            } else {
-                if (result.isFinal) {
-                    dialogflow2.requestQuery(result.bestTranscription.formattedString, onResult, onError);
-                }
-
+              onError(result.error);
+            }
+            else if (result.isFinal) {
+              dialogflow2.requestQuery(result.bestTranscription.formattedString, onResult, onError);
+            }
+            else {
+              onUpdate(result.bestTranscription.formattedString);
             }
 
         }
