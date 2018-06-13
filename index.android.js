@@ -1,9 +1,9 @@
 'use strict';
 
 import { NativeAppEventEmitter } from 'react-native';
-import Voice from './js/RCTVoice';
 import { Dialogflow } from './js/Dialogflow';
 import { Dialogflow_V2 } from './js/Dialogflow_V2';
+import Voice from './js/RCTVoice';
 
 /**
  *  DIALOGFLOW V1
@@ -46,8 +46,8 @@ export default dialogflow;
  */
 var dialogflow2 = new Dialogflow_V2();
 
-dialogflow2.setConfiguration = function (accessToken, languageTag, projectId) {
-    dialogflow2.accessToken = accessToken;
+dialogflow2.setConfiguration = function (clientEmail, privateKey, languageTag, projectId) {
+    dialogflow2.accessToken = dialogflow2.generateAccessToken(clientEmail, privateKey);
     dialogflow2.languageTag = languageTag;
     dialogflow2.projectId = projectId;
     dialogflow2.sessionId = dialogflow2.sessionId ? dialogflow2.sessionId : dialogflow2.guid();
@@ -75,4 +75,5 @@ dialogflow2.finishListening = function () {
     Voice.stop();
 }
 
-export { dialogflow2 as Dialogflow_V2 }
+export { dialogflow2 as Dialogflow_V2 };
+

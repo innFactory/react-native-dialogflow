@@ -62,13 +62,16 @@ Set the `accessToken` and the language in your constructor:
 
 ```
 
-For V2 you can set the OAUTH accessToken of the [auth setup](https://dialogflow.com/docs/reference/v2-auth-setup). In addition you have to set your projectId:
+For V2 you can set the `client_email` and `private_key` of the credential json [auth setup](https://dialogflow.com/docs/reference/v2-auth-setup). In addition you have to set your projectId:
 ```javascript
  constructor(props) {
         super(props);
 
         Dialogflow_V2.setConfiguration(
-          "4xxxxxxxe90xxxxxxxxc372", Dialogflow.LANG_GERMAN, 'testV2-3a5bc'
+            "your-dialogflow-project@asdf-76866.iam.gserviceaccount.com",
+            '-----BEGIN PRIVATE KEY-----\nMIIEvgIBADAN...1oqO\n-----END PRIVATE KEY-----\n',
+            Dialogflow_V2.LANG_GERMAN,
+            'testv2-3b5ca'
         );
     }
 

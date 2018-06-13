@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "react-native-speech-to-text-ios": "^1.0.4",
-    "react-native-voice": "^0.2.6"
+    "react-native-voice": "^0.2.6",
+    "jsrsasign": "^8.0.12"
   },
   "peerDependencies": {
     "react-native": ">=0.40.0"

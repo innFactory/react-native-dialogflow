@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		79DC99B4F696471B99960C9D /* libRNSpeechToTextIos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38383E296E604DAD8D5AEE1C /* libRNSpeechToTextIos.a */; };
-		CDD7BF841B2D5126006FDA75 /* libApiAi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD7BF781B2D5125006FDA75 /* libApiAi.a */; };
 		DBCB5CDE1B46E62D005CB38B /* ApiAi.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCB5CDD1B46E62D005CB38B /* ApiAi.m */; };
 /* End PBXBuildFile section */
 
@@ -19,13 +18,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNSpeechToTextIos;
-		};
-		CDD7BF851B2D5126006FDA75 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CDD7BF701B2D5125006FDA75 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CDD7BF771B2D5125006FDA75;
-			remoteInfo = RNI18n;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -44,7 +36,6 @@
 /* Begin PBXFileReference section */
 		38383E296E604DAD8D5AEE1C /* libRNSpeechToTextIos.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSpeechToTextIos.a; sourceTree = "<group>"; };
 		CDD7BF781B2D5125006FDA75 /* libApiAi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libApiAi.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDD7BF831B2D5126006FDA75 /* ApiAiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApiAiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCB5CDC1B46E62D005CB38B /* ApiAi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiAi.h; sourceTree = "<group>"; };
 		DBCB5CDD1B46E62D005CB38B /* ApiAi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiAi.m; sourceTree = "<group>"; };
 		EA8B7B90D397461785B390DB /* RNSpeechToTextIos.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSpeechToTextIos.xcodeproj; path = "../node_modules/react-native-speech-to-text-ios/ios/RNSpeechToTextIos.xcodeproj"; sourceTree = "<group>"; };
@@ -56,14 +47,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				79DC99B4F696471B99960C9D /* libRNSpeechToTextIos.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CDD7BF801B2D5126006FDA75 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CDD7BF841B2D5126006FDA75 /* libApiAi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +75,7 @@
 				DBCB5CDB1B46E62D005CB38B /* ApiAi */,
 				CDD7BF791B2D5125006FDA75 /* Products */,
 				56489C590F2D4EC58151DA97 /* Libraries */,
+				FD3552E620D14EF000C53894 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				CDD7BF781B2D5125006FDA75 /* libApiAi.a */,
-				CDD7BF831B2D5126006FDA75 /* ApiAiTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,6 +94,14 @@
 				DBCB5CDD1B46E62D005CB38B /* ApiAi.m */,
 			);
 			path = ApiAi;
+			sourceTree = "<group>";
+		};
+		FD3552E620D14EF000C53894 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				38383E296E604DAD8D5AEE1C /* libRNSpeechToTextIos.a */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,27 +124,6 @@
 			productReference = CDD7BF781B2D5125006FDA75 /* libApiAi.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		CDD7BF821B2D5126006FDA75 /* ApiAiTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CDD7BF8F1B2D5126006FDA75 /* Build configuration list for PBXNativeTarget "ApiAiTests" */;
-			buildPhases = (
-				EFAC75ADB211BDF9EFB98E2C /* [CP] Check Pods Manifest.lock */,
-				CDD7BF7F1B2D5126006FDA75 /* Sources */,
-				CDD7BF801B2D5126006FDA75 /* Frameworks */,
-				CDD7BF811B2D5126006FDA75 /* Resources */,
-				601948CA2F575DACD5063CFD /* [CP] Embed Pods Frameworks */,
-				3371A9D16586F53FFB2873A1 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CDD7BF861B2D5126006FDA75 /* PBXTargetDependency */,
-			);
-			name = ApiAiTests;
-			productName = RNI18nTests;
-			productReference = CDD7BF831B2D5126006FDA75 /* ApiAiTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -166,9 +136,6 @@
 					CDD7BF771B2D5125006FDA75 = {
 						CreatedOnToolsVersion = 6.3.2;
 						LastSwiftMigration = 830;
-					};
-					CDD7BF821B2D5126006FDA75 = {
-						CreatedOnToolsVersion = 6.3.2;
 					};
 				};
 			};
@@ -191,7 +158,6 @@
 			projectRoot = "";
 			targets = (
 				CDD7BF771B2D5125006FDA75 /* ApiAi */,
-				CDD7BF821B2D5126006FDA75 /* ApiAiTests */,
 			);
 		};
 /* End PBXProject section */
@@ -206,64 +172,6 @@
 		};
 /* End PBXReferenceProxy section */
 
-/* Begin PBXResourcesBuildPhase section */
-		CDD7BF811B2D5126006FDA75 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		3371A9D16586F53FFB2873A1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ApiAiTests/Pods-ApiAiTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		601948CA2F575DACD5063CFD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ApiAiTests/Pods-ApiAiTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EFAC75ADB211BDF9EFB98E2C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		CDD7BF741B2D5125006FDA75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -273,22 +181,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CDD7BF7F1B2D5126006FDA75 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CDD7BF861B2D5126006FDA75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CDD7BF771B2D5125006FDA75 /* ApiAi */;
-			targetProxy = CDD7BF851B2D5126006FDA75 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CDD7BF8A1B2D5126006FDA75 /* Debug */ = {
@@ -326,7 +219,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -362,7 +255,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -418,38 +311,6 @@
 			};
 			name = Release;
 		};
-		CDD7BF901B2D5126006FDA75 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = RNI18nTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = ApiAiTests;
-			};
-			name = Debug;
-		};
-		CDD7BF911B2D5126006FDA75 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = RNI18nTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = ApiAiTests;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -467,15 +328,6 @@
 			buildConfigurations = (
 				CDD7BF8D1B2D5126006FDA75 /* Debug */,
 				CDD7BF8E1B2D5126006FDA75 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CDD7BF8F1B2D5126006FDA75 /* Build configuration list for PBXNativeTarget "ApiAiTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CDD7BF901B2D5126006FDA75 /* Debug */,
-				CDD7BF911B2D5126006FDA75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

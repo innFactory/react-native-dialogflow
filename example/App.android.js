@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Button
-} from 'react-native';
+import { AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
+import Dialogflow, { Dialogflow_V2 } from "react-native-dialogflow";
 
-import Dialogflow, { Dialogflow_V2 } from "react-native-dialogflow"
 
 export default class App extends Component {
   constructor(props) {
@@ -21,11 +15,12 @@ export default class App extends Component {
 
 
     Dialogflow.setConfiguration(
-      "57b6ce865e6e4b138a74a88cfd8bc526", Dialogflow.LANG_GERMAN
+      "3242_your_token_2344454", Dialogflow.LANG_GERMAN
     );
 
     Dialogflow_V2.setConfiguration(
-      "ya29.c.El93BfD5CZBWUrPJAyUdfWuHkmdzyjo0seL56z-reryvae4j8oVwLO38ARqrpj0Q5LxeUTndPLrA6GYPx4CyrlVmJRKvq_Dtwl9OO0zxiWTVK7boCV-aCVJVHbaFSGstgA",
+      "reasdfsdfdf@asdf-76866.iam.gserviceaccount.com",
+      '-----BEGIN PRIVATE KEY-----\nMIIEvgIBADAN...1oqO\n-----END PRIVATE KEY-----\n',
       Dialogflow_V2.LANG_GERMAN,
       'testv2-3b5ca'
     );
