@@ -231,7 +231,8 @@ Dialogflow.setConfiguration("4xxxxxxxe90xxxxxxxxc372", Dialogflow.LANG_GERMAN);
 ## Methods
 | name                  | platform | param1    | param2    | param3    | param4    |
 | --------------------- | -------- | --------- | --------- | --------- | --------- |
-| `setConfiguration`    | both     | accessToken: String | languageTag: String | (V2 only) projectId: String |
+| `setConfiguration` (V1)   | both     | accessToken: String | languageTag: String  |
+| `setConfiguration` (V2)    | both     | client_email: String | private_key: String | languageTag: String | projectId: String |
 | `startListening`      | both     | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}  | |
 | `finishListening`     | ios      |  |   | |
 | `requestQuery`        | both     | query: String |  resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}   |
