@@ -19,10 +19,7 @@ export default async function postAsForm(url, data) {
         });
 
         //return plain text as-is, don't parse it here
-        return {
-            response: response,
-            text: await response.text()
-        }
+        return await response.text();
     } catch (err) {
         //console.error("Error from server:", err && err.stack || err);
         err.response = response;

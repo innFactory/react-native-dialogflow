@@ -11,7 +11,6 @@ const encodeJWT = function (options) {
     if (options.scopes.length === 0) { throw new Error('options.scopes must contain at least one scope'); }
     if (!options.key) { throw new Error('options.key is required'); }
 
-    console.log('generating jwt for %j', options);
 
     var iat = Math.floor(new Date().getTime() / 1000),
         exp = iat + Math.floor((options.expiration || 60 * 60 * 1000) / 1000),
@@ -33,15 +32,15 @@ const encodeJWT = function (options) {
     return rs.jws.JWS.sign("RS256", sHeader, JSON.stringify(claims), options.key);
 }
 
-const authenticate = function (email, key, scopes) {
+const authenticate = async (email, key, scopes) => {
 
-    const json = postAsForm('https://accounts.google.com/o/oauth2/token',
+    const json = await postAsForm('https://accounts.google.com/o/oauth2/token',
         {
             grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
             assertion: encodeJWT({ email, key, scopes })
         });
 
-    console.log(json);
+    return JSON.parse(json).access_token;
 }
 
 export default authenticate;
