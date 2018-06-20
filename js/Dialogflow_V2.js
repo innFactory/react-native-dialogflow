@@ -161,8 +161,8 @@ export class Dialogflow_V2 {
             s4() + "-" + s4() + s4() + s4();
     }
 
-    generateAccessToken(clientEmail, privateKey) {
-        googleAuth(clientEmail, privateKey, ['https://www.googleapis.com/auth/cloud-platform']);
+    async generateAccessToken(clientEmail, privateKey) {
+        return await googleAuth(clientEmail, privateKey, ['https://www.googleapis.com/auth/cloud-platform']);
     }
 
 

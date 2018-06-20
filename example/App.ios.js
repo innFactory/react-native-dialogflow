@@ -21,10 +21,10 @@ export default class App extends Component {
         );
 
         Dialogflow_V2.setConfiguration(
-            "reasdfsdfdf@asdf-76866.iam.gserviceaccount.com",
-            '-----BEGIN PRIVATE KEY-----\nMIIEvgIBADAN...1oqO\n-----END PRIVATE KEY-----\n',
+            "xxx-xxxx@xxxx-xxxx.iam.gserviceaccount.com",
+            '-----BEGIN PRIVATE KEY-----\nMIIXLwPRK+eTg=\n-----END PRIVATE KEY-----\n',
             Dialogflow_V2.LANG_GERMAN,
-            'testv2-3b5ca'
+            'xxxx-xxxxx'
         );
 
         const contexts = [{
