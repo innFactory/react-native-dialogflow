@@ -7,19 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		79DC99B4F696471B99960C9D /* libRNSpeechToTextIos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38383E296E604DAD8D5AEE1C /* libRNSpeechToTextIos.a */; };
 		DBCB5CDE1B46E62D005CB38B /* ApiAi.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCB5CDD1B46E62D005CB38B /* ApiAi.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		8427738C1F2CDF9A00EA2752 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA8B7B90D397461785B390DB /* RNSpeechToTextIos.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNSpeechToTextIos;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		CDD7BF761B2D5125006FDA75 /* CopyFiles */ = {
@@ -34,11 +23,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		38383E296E604DAD8D5AEE1C /* libRNSpeechToTextIos.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSpeechToTextIos.a; sourceTree = "<group>"; };
 		CDD7BF781B2D5125006FDA75 /* libApiAi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libApiAi.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCB5CDC1B46E62D005CB38B /* ApiAi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiAi.h; sourceTree = "<group>"; };
 		DBCB5CDD1B46E62D005CB38B /* ApiAi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiAi.m; sourceTree = "<group>"; };
-		EA8B7B90D397461785B390DB /* RNSpeechToTextIos.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSpeechToTextIos.xcodeproj; path = "../node_modules/react-native-speech-to-text-ios/ios/RNSpeechToTextIos.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +33,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79DC99B4F696471B99960C9D /* libRNSpeechToTextIos.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,17 +42,8 @@
 		56489C590F2D4EC58151DA97 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				EA8B7B90D397461785B390DB /* RNSpeechToTextIos.xcodeproj */,
 			);
 			name = Libraries;
-			sourceTree = "<group>";
-		};
-		8427736A1F2CDF9A00EA2752 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8427738D1F2CDF9A00EA2752 /* libRNSpeechToTextIos.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		CDD7BF6F1B2D5125006FDA75 = {
@@ -99,7 +76,6 @@
 		FD3552E620D14EF000C53894 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				38383E296E604DAD8D5AEE1C /* libRNSpeechToTextIos.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -149,28 +125,12 @@
 			mainGroup = CDD7BF6F1B2D5125006FDA75;
 			productRefGroup = CDD7BF791B2D5125006FDA75 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8427736A1F2CDF9A00EA2752 /* Products */;
-					ProjectRef = EA8B7B90D397461785B390DB /* RNSpeechToTextIos.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				CDD7BF771B2D5125006FDA75 /* ApiAi */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		8427738D1F2CDF9A00EA2752 /* libRNSpeechToTextIos.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNSpeechToTextIos.a;
-			remoteRef = 8427738C1F2CDF9A00EA2752 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CDD7BF741B2D5125006FDA75 /* Sources */ = {
@@ -274,10 +234,7 @@
 					"$(SRCROOT)/ApiAI/**",
 				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/ApiAi\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ApiAi;
 				SKIP_INSTALL = YES;
@@ -299,10 +256,7 @@
 					"$(SRCROOT)/ApiAI/**",
 				);
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/ApiAi\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ApiAi;
 				SKIP_INSTALL = YES;
