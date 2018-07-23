@@ -7,15 +7,15 @@ export const DEFAULT_BASE_URL = "https://dialogflow.googleapis.com/v2beta1/proje
 export class Dialogflow_V2 {
 
     onListeningStarted(callback) {
-        callback();
+        this.onListeningStarted = callback;
     }
 
     onListeningCanceled(callback) {
-        callback();
+        this.onListeningCanceled = callback;
     }
 
     onListeningFinished(callback) {
-        callback();
+        this.onListeningFinished = callback;
     }
 
     setContexts(contexts) {
