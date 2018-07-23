@@ -52,21 +52,20 @@ dialogflow2.setConfiguration = async function (clientEmail, privateKey, language
     dialogflow2.projectId = projectId;
     dialogflow2.sessionId = dialogflow2.sessionId ? dialogflow2.sessionId : dialogflow2.guid();
 
-    Voice.onSpeechStart = () => (c) => dialogflow2.onListeningStarted(c);
-    Voice.onSpeechEnd = () => (c) => dialogflow2.onListeningFinished(c);
+    Voice.onSpeechStart = (c) => dialogflow2.onListeningStarted(c);
+    Voice.onSpeechEnd = (c) => dialogflow2.onListeningFinished(c);
+    Voice.onSpeechVolumeChanged = (c) => dialogflow2.onAudioLevel(c);
+
+    Voice.onSpeechResults = (result) => {
+        if (result.value) {
+            dialogflow2.requestQuery(result.value[0], dialogflow2.onResult, dialogflow2.onError);
+        }
+    }
 }
 
 dialogflow2.startListening = function (onResult, onError) {
-
-    dialogflow2.subscription = NativeAppEventEmitter.addListener(
-        'onSpeechResults',
-        (result) => {
-            if (result.value) {
-                dialogflow2.requestQuery(result.value[0], onResult, onError);
-            }
-
-        }
-    );
+    dialogflow2.onResult = onResult;
+    dialogflow2.onError = onError;
 
     Voice.start(dialogflow2.languageTag);
 }
