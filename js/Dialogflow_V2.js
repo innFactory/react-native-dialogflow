@@ -162,7 +162,15 @@ export class Dialogflow_V2 {
     }
 
     async generateAccessToken(clientEmail, privateKey) {
-        return await googleAuth(clientEmail, privateKey, ['https://www.googleapis.com/auth/cloud-platform']);
+        let token;
+        try {
+            token = await googleAuth(clientEmail, privateKey, ['https://www.googleapis.com/auth/cloud-platform']);
+        } catch (e) {
+            console.error("react-native-dialogflow: Authentication Error: " + e);
+            throw new Error("react-native-dialogflow: Authentication Error: " + e);
+        } finally {
+            return token;
+        }
     }
 
 
