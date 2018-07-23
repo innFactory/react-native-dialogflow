@@ -1,8 +1,8 @@
 # react-native-dialogflow (react-native-api-ai)
 
-[![Build Status](https://travis-ci.org/innFactory/react-native-dialogflow.svg?branch=master)](https://www.npmjs.com/package/react-native-api-ai)
-[![Version](https://img.shields.io/npm/v/react-native-dialogflow.svg)](https://www.npmjs.com/package/react-native-api-ai)
-[![Downloads](https://img.shields.io/npm/dt/react-native-dialogflow.svg)](https://www.npmjs.com/package/react-native-api-ai)
+[![Build Status](https://travis-ci.org/innFactory/react-native-dialogflow.svg?branch=master)](https://www.npmjs.com/package/react-native-dialogflow)
+[![Version](https://img.shields.io/npm/v/react-native-dialogflow.svg)](https://www.npmjs.com/package/react-native-dialogflow)
+[![Downloads](https://img.shields.io/npm/dt/react-native-dialogflow.svg)](https://www.npmjs.com/package/react-native-dialogflow)
 
 
 A React-Native Bridge for the Google Dialogflow AI SDK.
@@ -20,7 +20,6 @@ Add react-native-dialogflow and link it:
 npm install --save react-native-dialogflow
 
 react-native link react-native-dialogflow
-react-native link react-native-speech-to-text-ios
 react-native link react-native-voice
 
 ```
@@ -237,9 +236,9 @@ Dialogflow.setConfiguration("4xxxxxxxe90xxxxxxxxc372", Dialogflow.LANG_GERMAN);
 | `finishListening`     | ios      |  |   | |
 | `requestQuery`        | both     | query: String |  resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}   |
 | `requestEvent`        | both     | eventName: String | eventData: Object | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{}   |
-| `onListeningStarted`  | android  | callback: ()=>{}    | | |
-| `onListeningCanceled` | android  | callback: ()=>{}    || |
-| `onListeningFinished` | android  | callback: ()=>{}    | | |
+| `onListeningStarted`  | both  | callback: ()=>{}    | | |
+| `onListeningCanceled` | none  | callback: ()=>{}    || |
+| `onListeningFinished` | both  | callback: ()=>{}    | | |
 | `onAudioLevel`        | android  | callback: (level: number)=>{}    || |
 | `setContexts`         | both     | array    || |
 | `resetContexts`       | both     | resultCallback: (result: object)=>{} | errorCallback: (error: object)=>{} | |
