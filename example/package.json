@@ -8,17 +8,11 @@
   },
   "dependencies": {
     "jsrsasign": "^8.0.12",
-    "react": "16.4.0",
-    "react-native": "0.55.4",
+    "react": "16.6.0-alpha.8af6728",
+    "react-native": "0.57.3",
     "react-native-dialogflow": "../"
   },
   "devDependencies": {
-    "babel-jest": "22.4.1",
-    "babel-preset-react-native": "4.0.0",
-    "jest": "22.4.2",
-    "react-test-renderer": "16.4.0"
-  },
-  "jest": {
-    "preset": "react-native"
+    "metro-react-native-babel-preset": "0.48.1"
   }
 }
