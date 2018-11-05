@@ -1,7 +1,7 @@
 {
   "name": "react-native-dialogflow",
   "description": "A React-Native Bridge for the Google Dialogflow SDK",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "author": "Anton Spöck (https://github.com/spoeck)",
   "dependencies": {
     "jsrsasign": "^8.0.12"
