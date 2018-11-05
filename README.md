@@ -15,9 +15,11 @@ Support for iOS 10+ and Android!
 
 ## Install
 
+This package depends on react-native-voice, follow their readme to setup it.
+
 Add react-native-dialogflow and link it:
 ```
-npm install --save react-native-dialogflow
+npm install --save react-native-dialogflow react-native-voice
 
 react-native link react-native-dialogflow
 react-native link react-native-voice
@@ -248,7 +250,7 @@ Dialogflow.setConfiguration("4xxxxxxxe90xxxxxxxxc372", Dialogflow.LANG_GERMAN);
 
 ## Blogpost
 
-### Deutsch 
+### Deutsch
 [Sprachsteuerung mit Api.ai in einer React-Native App](https://innfactory.de/de/blog/34-software-engineering/65-sprachsteuerung-mit-api-ai-in-einer-react-native-app)
 ### English
 

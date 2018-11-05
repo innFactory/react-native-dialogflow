@@ -2,30 +2,30 @@
   "name": "react-native-dialogflow",
   "description": "A React-Native Bridge for the Google Dialogflow SDK",
   "version": "3.2.1",
+  "author": "Anton Spöck (https://github.com/spoeck)",
+  "dependencies": {
+    "jsrsasign": "^8.0.12"
+  },
+  "keywords": [
+    "ai",
+    "api",
+    "api-ai",
+    "api.ai",
+    "apiai",
+    "dialogflow",
+    "google",
+    "react-native",
+    "speak",
+    "text-recognition",
+    "voice"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native": ">=0.40.0",
+    "react-native-voice": ">=0.2.6"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/innFactory/react-native-dialogflow"
-  },
-  "dependencies": {
-    "jsrsasign": "^8.0.12",
-    "react-native-voice": "^0.2.6"
-  },
-  "peerDependencies": {
-    "react-native": ">=0.40.0"
-  },
-  "keywords": [
-    "react-native",
-    "api-ai",
-    "apiai",
-    "api",
-    "ai",
-    "api.ai",
-    "google",
-    "voice",
-    "speak",
-    "text-recognition",
-    "dialogflow"
-  ],
-  "author": "Anton Spöck (https://github.com/spoeck)",
-  "license": "MIT"
+  }
 }
