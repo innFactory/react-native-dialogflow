@@ -134,7 +134,40 @@ export class Dialogflow_V2 {
             })
             .catch(onError);
     };
+    
+    requestQueryWithAuth = async (query, token, onResult, onError) => {
 
+        const data = {
+            "queryParams": {
+                "contexts": this.mergeContexts(this.contexts, this.permanentContexts),
+                "sessionEntityTypes": []
+            },
+            "queryInput": {
+                "text": {
+                    "text": query,
+                    "languageCode": this.languageTag,
+                },
+            },
+            token
+        }
+
+        this.contexts = null;
+        this.entities = null;
+
+        fetch(DEFAULT_BASE_URL + this.projectId + "/agent/sessions/" + this.sessionId + ":detectIntent", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': 'Bearer ' + this.accessToken,
+                'charset': "utf-8"
+            },
+            body: JSON.stringify(data)
+        })
+            .then(function (response) {
+                var json = response.json().then(onResult)
+            })
+            .catch(onError);
+    };
 
     mergeContexts(context1, context2) {
         if (!context1) {
