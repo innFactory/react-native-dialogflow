@@ -147,8 +147,8 @@ export class Dialogflow_V2 {
     }
 
     resetContexts(onResult, onError) {
-        let request = new ResetContextsRequest(this.client.getAccessToken(), this.client.getSessionId(), null);
-        request.perform().then(res => onResult(res)).catch(err => onError(err));
+      let request = new ResetContextsRequest(this.accessToken, this.sessionId, this.projectId, null);
+      request.perform().then(res => onResult(res)).catch(err => onError(err));
     };
 
     /**

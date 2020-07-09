@@ -3,17 +3,15 @@
  */
 import { ApiAiRequestError } from "./Errors";
 import XhrRequest from './XhrRequest';
-export const DEFAULT_BASE_URL = "https://api.api.ai/v1/";
-
+export const DEFAULT_BASE_URL = "https://dialogflow.googleapis.com/v2/";
 
 class ResetContextsRequest {
-    constructor(accessToken, sessionId, contextName) {
+    constructor(accessToken, sessionId, projectId, contextName) {
 
         if (contextName != null) {
             this.uri = DEFAULT_BASE_URL + "contexts/" + contextName + "?sessionId=" + sessionId;
         } else {
-            this.uri = DEFAULT_BASE_URL + "contexts?sessionId=" + sessionId;
-        }
+          this.uri = DEFAULT_BASE_URL + "projects/" + projectId + "/agent/sessions/" + sessionId + "/contexts";        }
 
         this.headers = {
             Authorization: "Bearer " + accessToken,
