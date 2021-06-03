@@ -4,7 +4,7 @@
   "version": "3.2.2",
   "author": "Anton Spöck (https://github.com/spoeck)",
   "dependencies": {
-    "jsrsasign": "^8.0.12"
+    "jsrsasign": "^10.2.0"
   },
   "keywords": [
     "ai",
