@@ -55,13 +55,13 @@ android {
 
 
 dependencies {
-    compile "com.facebook.react:react-native:+"
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'ai.api:sdk:2.0.7@aar'
-    compile 'com.google.code.gson:gson:2.3'
-    compile 'commons-io:commons-io:2.4'
-    compile('ai.api:libai:1.4.8') {
+    implementation "com.facebook.react:react-native:+"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:23.2.1'
+    implementation 'ai.api:sdk:2.0.7@aar'
+    implementation 'com.google.code.gson:gson:2.3'
+    implementation 'commons-io:commons-io:2.4'
+    implementation('ai.api:libai:1.4.8') {
        exclude module: 'log4j-core'
     }
 }
